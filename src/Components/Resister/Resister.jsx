@@ -1,15 +1,25 @@
 import { useContext, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import { FaBeer } from 'react-icons/fa';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 
+
+
 const Resister = () => {
+
+   const imgHostingToken = import.meta.env.VITE_API_Token
+   console.log(imgHostingToken)
+const HostingURL = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`
+
+
    const { CreatUSerEmail, signOutUSer, updateUser } = useContext(AuthContext)
    const [error, setError] = useState('');
-   const location = useLocation();
    const navigate = useNavigate();
-   const mainLocation = location.state?.from?.pathname || '/';
+ 
+
+
+
 
    const handleResiter = (e) => {
       e.preventDefault();
@@ -18,69 +28,66 @@ const Resister = () => {
       const email = form.email.value;
       const password = form.password.value;
       const confirmPassword = form.confirmPassword.value;
+      const Image = form.image.files
    
       console.log({ email, password, confirmPassword, name });
    
-      let errorMessages = [];
-   
-   
       if (password.length < 6) {
-         errorMessages.push("Password should be at least 6 characters long.");
-      }
-   
-      if (!/[a-z]/.test(password)) {
-         errorMessages.push("Password should contain at least one lowercase letter.");
-      }
-   
-      if (!/[A-Z]/.test(password)) {
-         errorMessages.push("Password should contain at least one capital letter.");
-      }
-   
-      if (!/[@$!%*?&]/.test(password)) {
-         errorMessages.push("Password should contain at least one special character.");
-      }
-   
-      if (errorMessages.length > 0) {
-         // Display individual error messages
-         errorMessages.forEach((message) => {
-            setError(message);
-         });
+         setError("Password should be at least 6 characters long.");
          return;
       }
    
-      if (password === confirmPassword) {
-         CreatUSerEmail(email, password)
-            .then((userCredential) => {
-               const user = userCredential.user;
-               console.log(user);
-   
-               updateUser(name)
-                  .then(() => {
-                     signOutUSer();
-                     Swal.fire({
-                        position: 'top-center',
-                        icon: 'success',
-                        title: 'Register Successful. Login Now!',
-                        showConfirmButton: false,
-                        timer: 1500
-                     });
-                     navigate('/login');
-                     form.reset();
-                  })
-                  .catch(error => {
-                     setError(error.message);
-                  });
-            })
-            .catch((error) => {
-               setError(error.message);
-            });
-      } else {
-         setError('Invalid password confirmation. Double-check your entry and try again.');
+      if (!/[a-z]/.test(password)) {
+         setError("Password should contain at least one lowercase letter.");
+         return;
       }
+   
+      if (!/[A-Z]/.test(password)) {
+         setError("Password should contain at least one capital letter.");
+         return;
+      }
+   
+      if (!/[@$!%*?&]/.test(password)) {
+         setError("Password should contain at least one special character.");
+         return;
+      }
+   
+      if (password !== confirmPassword) {
+         setError('Invalid password confirmation. Double-check your entry and try again.');
+         return;
+      }
+   
+      CreatUSerEmail(email, password)
+         .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user);
+   
+            updateUser(name)
+               .then(() => {
+                  signOutUSer();
+                  Swal.fire({
+                     position: 'top-center',
+                     icon: 'success',
+                     title: 'Register Successful. Login Now!',
+                     showConfirmButton: false,
+                     timer: 1500
+                  });
+                  navigate('/login');
+                  form.reset();
+               })
+               .catch(error => {
+                  setError(error.message);
+               });
+         })
+         .catch((error) => {
+            setError(error.message);
+         });
    };
    
    
+   
    return (
+   
       <div className="min-h-screen flex items-center justify-center    bg-gradient-to-r from-pink-500 to-indigo-500 ">
          <div className="flex flex-col md:mt-20 md:flex-row w-full md:w-4/5 bg-gradient-to-r from-yellow-500 to-indigo-500 rounded-lg shadow-lg overflow-hidden">
             <div className="relative md:w-3/5">
@@ -158,7 +165,7 @@ const Resister = () => {
                         Choose Your Profile
                      </label>
                      <div className="relative">
-                        <input type="file" className="file-input file-input-bordered file-input-warning w-full max-w-xs" required name='Image' />
+                        <input type="file" className="file-input file-input-bordered file-input-warning w-full max-w-xs" required name='image' />
 
 
                      </div>
@@ -184,7 +191,7 @@ const Resister = () => {
                   </div>
                   
                </form>
-
+<p>hellow</p>
             </div>
          </div>
       </div>
