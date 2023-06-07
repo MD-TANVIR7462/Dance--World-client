@@ -1,18 +1,36 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const NavBar = () => {
-   const {User} =useContext(AuthContext)
+   const { User, signOutUSer } = useContext(AuthContext)
 
-  
+   const logout = () => {
+      signOutUSer()
+         .then((result) => {
+            console.log(result);
+            Swal.fire({
+               position: 'top-center',
+               icon: 'success',
+               title: 'successfuly LogOut',
+               showConfirmButton: false,
+               timer: 1500
+            })
+         })
+         .catch((error)=>{
+            console.log(error.message);
+         })
+   }
+
+
 
    const navOptions = <>
 
       <li><Link to={'/'}>Home</Link></li>
       <li><Link to={'/Instructors'}>Instructors</Link></li>
       <li><Link to={'/Classes'}>Our Classes</Link></li>
-      
+
 
    </>
    return (
@@ -26,7 +44,7 @@ const NavBar = () => {
                   <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-yellow-300">
                      {navOptions}
                      {
-                       User&& <li><Link to={'/Dashboard'}>Dashboard</Link></li>
+                        User && <li><Link to={'/Dashboard'}>Dashboard</Link></li>
                      }
 
                   </ul>
@@ -40,8 +58,8 @@ const NavBar = () => {
                <ul className="menu menu-horizontal px-1 text-yellow-300">
                   {navOptions}
                   {
-                        User && <li><Link to={'/Dashboard'}>Dashboard</Link></li>
-                     }
+                     User && <li><Link to={'/Dashboard'}>Dashboard</Link></li>
+                  }
                </ul>
 
 
@@ -58,8 +76,8 @@ const NavBar = () => {
                      </div>
 
                      <button className="btn btn-warning btn-outline  rounded-lg shadow-lg hover:bg-gradient-to-r from-yellow-400 to-yellow-500  flex items-center justify-center space-x-2">
-                        
-                        <span className="animate-bounce">Logout</span>
+
+                        <span className="animate-bounce"  onClick={logout}>Logout</span>
                      </button>
 
 
@@ -67,8 +85,8 @@ const NavBar = () => {
                   </div>
                ) : (
                   <Link to={'/login'}>
-                      <button className="btn btn-warning btn-outline  rounded-lg shadow-lg hover:bg-gradient-to-r from-yellow-400 to-yellow-500  flex items-center justify-center space-x-2">
-                        
+                     <button className="btn btn-warning btn-outline  rounded-lg shadow-lg hover:bg-gradient-to-r from-yellow-400 to-yellow-500  flex items-center justify-center space-x-2">
+
                         <span className="animate-bounce">Login</span>
                      </button>
                   </Link>

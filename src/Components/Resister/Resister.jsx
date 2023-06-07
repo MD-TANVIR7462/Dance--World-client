@@ -18,66 +18,68 @@ const Resister = () => {
       const email = form.email.value;
       const password = form.password.value;
       const confirmPassword = form.confirmPassword.value;
-
+   
       console.log({ email, password, confirmPassword, name });
+   
+      let errorMessages = [];
+   
+   
+      if (password.length < 6) {
+         errorMessages.push("Password should be at least 6 characters long.");
+      }
+   
+      if (!/[a-z]/.test(password)) {
+         errorMessages.push("Password should contain at least one lowercase letter.");
+      }
+   
+      if (!/[A-Z]/.test(password)) {
+         errorMessages.push("Password should contain at least one capital letter.");
+      }
+   
+      if (!/[@$!%*?&]/.test(password)) {
+         errorMessages.push("Password should contain at least one special character.");
+      }
+   
+      if (errorMessages.length > 0) {
+         // Display individual error messages
+         errorMessages.forEach((message) => {
+            setError(message);
+         });
+         return;
+      }
+   
       if (password === confirmPassword) {
-         //     CreatUSerEmail(email, password)
-         //     .then((userCredential) => {
-
-         //       const user = userCredential.user;
-         //       console.log(user);
-
-         //       updateUser(name)
-         //       .then(() => {
-         //          // Profile updated!
-         //          console.log('Profile updated');
-         //          // ...
-         //        }).catch((error) => {
-         //          setError(error.message)
-         //        });
-         //     })
-         //     .catch((error) => {
-         //       const errorCode = error.code;
-         //       const errorMessage = error.message;
-         //   setError(errorMessage)
-         //     });
-
          CreatUSerEmail(email, password)
             .then((userCredential) => {
-
                const user = userCredential.user;
-               console.log(user)
-
+               console.log(user);
+   
                updateUser(name)
                   .then(() => {
-                     signOutUSer()
+                     signOutUSer();
                      Swal.fire({
                         position: 'top-center',
                         icon: 'success',
-                        title: 'Resister Successfull LOGIN NOW!!',
+                        title: 'Register Successful. Login Now!',
                         showConfirmButton: false,
                         timer: 1500
-                     })
-                     navigate('/login')
-                     from.reset()
+                     });
+                     navigate('/login');
+                     form.reset();
                   })
                   .catch(error => {
-                     setError(error.message)
-                  })
-               
-                  
-
+                     setError(error.message);
+                  });
             })
             .catch((error) => {
-               setError(error.message)
+               setError(error.message);
             });
-
-
-
+      } else {
+         setError('Invalid password confirmation. Double-check your entry and try again.');
       }
-
-
    };
+   
+   
    return (
       <div className="min-h-screen flex items-center justify-center    bg-gradient-to-r from-pink-500 to-indigo-500 ">
          <div className="flex flex-col md:mt-20 md:flex-row w-full md:w-4/5 bg-gradient-to-r from-yellow-500 to-indigo-500 rounded-lg shadow-lg overflow-hidden">
@@ -156,7 +158,7 @@ const Resister = () => {
                         Choose Your Profile
                      </label>
                      <div className="relative">
-                        <input type="file" className="file-input file-input-bordered file-input-warning w-full max-w-xs" />
+                        <input type="file" className="file-input file-input-bordered file-input-warning w-full max-w-xs" required name='Image' />
 
 
                      </div>

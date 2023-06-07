@@ -25,7 +25,7 @@ const LoginPage = () => {
 
         console.log(result);
         Swal.fire({
-          position: 'top-end',
+          position: 'top-center',
           icon: 'success',
           title: 'Login successful',
           showConfirmButton: false,
@@ -51,7 +51,7 @@ const LoginPage = () => {
         const user = result.user;
 
         Swal.fire({
-          position: 'top-end',
+          position: 'top-center',
           icon: 'success',
           title: 'Login successful',
           showConfirmButton: false,
