@@ -16,7 +16,7 @@ const Benner = () => {
 
    return (
       <>
-         <div className='mb-8'>
+         <div className=''>
             <Swiper
                spaceBetween={0}
                pagination={{
