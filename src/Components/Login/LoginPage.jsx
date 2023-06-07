@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FaBeer } from 'react-icons/fa';
 
 const LoginPage = () => {
   const [error, setError] = useState('');
@@ -18,7 +19,7 @@ const LoginPage = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center  bg-gradient-to-r from-pink-500 to-indigo-500 ">
-      <div className="flex flex-col md:flex-row w-full md:w-4/5 bg-gradient-to-r from-pink-500 to-indigo-500 rounded-lg shadow-lg overflow-hidden">
+      <div className="flex flex-col md:flex-row w-full md:w-4/5 bg-gradient-to-r from-yellow-500 to-indigo-500 rounded-lg shadow-lg overflow-hidden">
         <div className="relative md:w-3/5">
           <img
             src={'https://i.ibb.co/1qbXWYH/the-dance-academy-lehi-empowering-young-dancers-leaping-1800-sm.jpg'}
