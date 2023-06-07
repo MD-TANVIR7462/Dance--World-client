@@ -1,20 +1,82 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaBeer } from 'react-icons/fa';
+// import { FaBeer } from 'react-icons/fa';
+import { AuthContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Resister = () => {
+   const { CreatUSerEmail, signOutUSer, updateUser } = useContext(AuthContext)
    const [error, setError] = useState('');
    const location = useLocation();
    const navigate = useNavigate();
    const mainLocation = location.state?.from?.pathname || '/';
 
-   const handleLogin = (e) => {
+   const handleResiter = (e) => {
       e.preventDefault();
       const form = e.target;
+      const name = form.name.value
       const email = form.email.value;
       const password = form.password.value;
-      console.log(email, password);
-      // Handle login logic here
+      const confirmPassword = form.confirmPassword.value;
+
+      console.log({ email, password, confirmPassword, name });
+      if (password === confirmPassword) {
+         //     CreatUSerEmail(email, password)
+         //     .then((userCredential) => {
+
+         //       const user = userCredential.user;
+         //       console.log(user);
+
+         //       updateUser(name)
+         //       .then(() => {
+         //          // Profile updated!
+         //          console.log('Profile updated');
+         //          // ...
+         //        }).catch((error) => {
+         //          setError(error.message)
+         //        });
+         //     })
+         //     .catch((error) => {
+         //       const errorCode = error.code;
+         //       const errorMessage = error.message;
+         //   setError(errorMessage)
+         //     });
+
+         CreatUSerEmail(email, password)
+            .then((userCredential) => {
+
+               const user = userCredential.user;
+               console.log(user)
+
+               updateUser(name)
+                  .then(() => {
+                     signOutUSer()
+                     Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Resister Successfull LOGIN NOW!!',
+                        showConfirmButton: false,
+                        timer: 1500
+                     })
+                     navigate('/login')
+                     from.reset()
+                  })
+                  .catch(error => {
+                     setError(error.message)
+                  })
+               
+                  
+
+            })
+            .catch((error) => {
+               setError(error.message)
+            });
+
+
+
+      }
+
+
    };
    return (
       <div className="min-h-screen flex items-center justify-center    bg-gradient-to-r from-pink-500 to-indigo-500 ">
@@ -28,7 +90,7 @@ const Resister = () => {
             </div>
             <div className="w-full md:w-3/6 px-8 py-12">
                <h2 className="text-3xl font-bold mb-4 text-center md:text-left text-white">Resister Here </h2>
-               <form className="space-y-6" onSubmit={handleLogin}>
+               <form className="space-y-6" onSubmit={handleResiter}>
                   <div>
                      <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
                         Name
@@ -49,7 +111,7 @@ const Resister = () => {
                      <input
                         name="email"
                         type="email"
-                        autoComplete="email"
+
                         required
                         className="appearance-none block w-full px-4 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                         placeholder="Enter your email address"
@@ -63,7 +125,7 @@ const Resister = () => {
                         <input
                            name="password"
                            type="text"
-                           autoComplete="current-password"
+
                            required
                            className="appearance-none block w-full px-4 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                            placeholder="Enter your password"
@@ -78,9 +140,9 @@ const Resister = () => {
                      </label>
                      <div className="relative">
                         <input
-                           name="confirm-password"
+                           name="confirmPassword"
                            type="text"
-                           autoComplete="current-password"
+
                            required
                            className="appearance-none block w-full px-4 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                            placeholder="Confirm-password"
@@ -99,10 +161,7 @@ const Resister = () => {
 
                      </div>
                   </div>
-
-
-
-
+                  {error && <p className="text-yellow-500">{error}</p>}
                   <div>
                      <p className="text-sm text-center md:text-left text-white">
                         Have an Acaount ?
@@ -121,7 +180,7 @@ const Resister = () => {
                         </button>
                      </p>
                   </div>
-                  {error && <p className="text-red-500">{error}</p>}
+                  
                </form>
 
             </div>

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const NavBar = () => {
+   const {User} =useContext(AuthContext)
 
-   const displayName = false
+  
 
    const navOptions = <>
 
@@ -24,7 +26,7 @@ const NavBar = () => {
                   <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-yellow-300">
                      {navOptions}
                      {
-                        displayName && <li><Link to={'/Dashboard'}>Dashboard</Link></li>
+                       User&& <li><Link to={'/Dashboard'}>Dashboard</Link></li>
                      }
 
                   </ul>
@@ -38,19 +40,19 @@ const NavBar = () => {
                <ul className="menu menu-horizontal px-1 text-yellow-300">
                   {navOptions}
                   {
-                        displayName && <li><Link to={'/Dashboard'}>Dashboard</Link></li>
+                        User && <li><Link to={'/Dashboard'}>Dashboard</Link></li>
                      }
                </ul>
 
 
             </div>
             <div className="navbar-end">
-               {displayName ? (
+               {User ? (
                   <div className="flex justify-center gap-4">
-                     <div className="tooltip" data-tip={displayName ? displayName : 'No-Name'}>
+                     <div className="tooltip" data-tip={User?.displayName ? User?.displayName : 'No-Name'}>
                         <label className="btn btn-ghost btn-circle avatar">
                            <div className="w-10 rounded-full">
-                              <img src='https://i.ibb.co/nBFGcdn/young-handsome-man-beard-wearing-260nw-1768126784.webp' />
+                              <img src={User.photoURL} />
                            </div>
                         </label>
                      </div>

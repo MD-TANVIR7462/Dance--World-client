@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaBeer } from 'react-icons/fa';
+import { AuthContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
+
 
 const LoginPage = () => {
-  const [error, setError] = useState('');
-  const location = useLocation();
-  const navigate = useNavigate();
-  const mainLocation = location.state?.from?.pathname || '/';
+  const [error, seterror] = useState('')
+  const { googleCreatUSer, SignInUSer } = useContext(AuthContext)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const mainlocation = location.state?.from?.pathname || '/'
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,6 +19,53 @@ const LoginPage = () => {
     const password = form.password.value;
     console.log(email, password);
     // Handle login logic here
+
+    SignInUSer(email, password)
+      .then((result) => {
+
+        console.log(result);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Login successful',
+          showConfirmButton: false,
+          timer: 1500
+        })
+
+        form.reset()
+        navigate(mainlocation)
+
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        seterror(error.message)
+        console.log(error)
+      });
+
+  };
+
+
+  const handleGoogle = () => {
+    googleCreatUSer()
+      .then((result) => {
+        const user = result.user;
+
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Login successful',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        navigate(mainlocation)
+
+
+
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        seterror(error.message)
+      });
   };
 
   return (
@@ -84,27 +135,27 @@ const LoginPage = () => {
             </div>
             <div>
               <p className="text-sm text-center md:text-left text-white">
-                New Here? 
+                New Here?
                 <Link to="/register" className="font-medium text-yellow-400 ps-1 hover:text-indigo-700">
-                   Register Now....
+                  Register Now....
                 </Link>
               </p>
             </div>
             <div>
               <p className='flex justify-center'>
-              <button
-                type="submit"
-                className="btn btn-warning btn-outline  w-5/6  rounded-lg shadow-lg hover:bg-gradient-to-r from-yellow-400 to-yellow-500  flex items-center justify-center space-x-2"
-              >
-                Log in
-              </button>
+                <button
+                  type="submit"
+                  className="btn btn-warning btn-outline  w-5/6  rounded-lg shadow-lg hover:bg-gradient-to-r from-yellow-400 to-yellow-500  flex items-center justify-center space-x-2"
+                >
+                  Log in
+                </button>
               </p>
             </div>
             {error && <p className="text-red-500">{error}</p>}
           </form>
           <div className="mt-4 flex flex-col items-center ">
             <p className="text-sm text-center text-white pb-5">Sign Up With</p>
-            <button className='btn btn-circle btn-warning w-20'>google</button>
+            <button className='btn btn-circle btn-warning w-20' onClick={handleGoogle}>google</button>
           </div>
         </div>
       </div>

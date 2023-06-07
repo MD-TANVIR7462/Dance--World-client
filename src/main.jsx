@@ -9,7 +9,7 @@ import {
 import LoginPage from './Components/Login/LoginPage.jsx';
 import HomePage from './Pages/UserPages/HomePage/HomePage.jsx';
 import Resister from './Components/Resister/Resister.jsx';
-// import AuthProvider from './Components/Provider/AuthProvider.jsx';
+import AuthProvider from './Components/Provider/AuthProvider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,8 +37,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-  {/* <AuthProvider> */}
+  <AuthProvider>
   <RouterProvider router={router} />
-  {/* </AuthProvider> */}
+  </AuthProvider>
   </React.StrictMode>,
 )
