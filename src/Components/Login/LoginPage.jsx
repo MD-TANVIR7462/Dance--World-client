@@ -18,7 +18,7 @@ const LoginPage = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-    // Handle login logic here
+    
 
     SignInUSer(email, password)
       .then((result) => {
@@ -37,7 +37,7 @@ const LoginPage = () => {
 
       })
       .catch((error) => {
-        const errorCode = error.code;
+
         seterror(error.message)
         console.log(error)
       });
@@ -48,7 +48,7 @@ const LoginPage = () => {
   const handleGoogle = () => {
     googleCreatUSer()
       .then((result) => {
-        const user = result.user;
+
 
         Swal.fire({
           position: 'top-center',
@@ -151,7 +151,7 @@ const LoginPage = () => {
                 </button>
               </p>
             </div>
-            {error && <p className="text-red-500">{error}</p>}
+            {error && <p className="text-yellow-500">{error}</p>}
           </form>
           <div className="mt-4 flex flex-col items-center ">
             <p className="text-sm text-center text-white pb-5">Sign Up With</p>

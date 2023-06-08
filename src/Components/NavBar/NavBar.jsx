@@ -27,9 +27,9 @@ const NavBar = () => {
 
    const navOptions = <>
 
-      <li><Link to={'/'}>Home</Link></li>
-      <li><Link to={'/Instructors'}>Instructors</Link></li>
-      <li><Link to={'/Classes'}>Our Classes</Link></li>
+      <li className='text-lg'><Link to={'/'}>Home</Link></li>
+      <li className='text-lg'><Link to={'/Instructors'}>Instructors</Link></li>
+      <li className='text-lg'><Link to={'/Classes'}>Our Classes</Link></li>
 
 
    </>
@@ -44,21 +44,21 @@ const NavBar = () => {
                   <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-yellow-300">
                      {navOptions}
                      {
-                        User && <li><Link to={'/Dashboard'}>Dashboard</Link></li>
+                        User && <li  className='text-lg'><Link to={'/Dashboard'}>Dashboard</Link></li>
                      }
 
                   </ul>
                </div>
                <div className='flex items-center'>
                   <img src={"https://i.ibb.co/f2YbNWG/a8e152ea86a0f346f14a90c42c342c6b.jpg"} className='w-20 flex rounded-full' alt="" />
-                  <span className="text-yellow-400 text-xl ps-2">Dance World</span>
+                  <span className="text-yellow-400 text-base font-bold md:text-2xl ps-1">Dance World</span>
                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                <ul className="menu menu-horizontal px-1 text-yellow-300">
                   {navOptions}
                   {
-                     User && <li><Link to={'/Dashboard'}>Dashboard</Link></li>
+                     User && <li  className='text-lg'><Link to={'/Dashboard'}>Dashboard</Link></li>
                   }
                </ul>
 
