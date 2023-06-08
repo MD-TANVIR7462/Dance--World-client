@@ -30,7 +30,7 @@ const signOutUSer=()=>{
 }
 
 const updateUser=(name,url)=>{
-   console.log(name,url)
+   
    return updateProfile(auth.currentUser,{
       displayName: name, photoURL: url
    })

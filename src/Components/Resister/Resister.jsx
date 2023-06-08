@@ -28,7 +28,7 @@ const Resister = () => {
       // const image = form.image.files
       const imageUrl = form.url.value
 
-    const user = { name, imageUrl,email};
+    const user = { name : name, image : imageUrl,email : email};
     console.log(user)
 
       if (password.length < 6) {
@@ -60,7 +60,19 @@ const Resister = () => {
 
 
 
+      fetch('http://localhost:5000/allusers', {
+         method: 'POST',
+         headers: {
+            "content-type": "application/json"
+         },
+         body: JSON.stringify(user)
+      })
+         .then(res => res.json())
+         .then(data => {
+            console.log(data)
+         
 
+         })
 
 
       // ---------userCreation------------------>>>>>>>>
@@ -81,6 +93,7 @@ const Resister = () => {
                  
                   updateUser(name, imageUrl)
                      .then(() => {
+                        
 
                         signOutUSer();
                         navigate('/login');
