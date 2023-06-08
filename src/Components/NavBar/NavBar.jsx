@@ -75,9 +75,9 @@ const NavBar = () => {
                         </label>
                      </div>
 
-                     <button className="btn btn-warning btn-outline  rounded-lg shadow-lg hover:bg-gradient-to-r from-yellow-400 to-yellow-500  flex items-center justify-center space-x-2">
+                     <button  onClick={logout} className="btn btn-warning btn-outline  rounded-lg shadow-lg hover:bg-gradient-to-r from-yellow-400 to-yellow-500  flex items-center justify-center space-x-2">
 
-                        <span className="animate-bounce"  onClick={logout}>Logout</span>
+                        <span className="animate-bounce" >Logout</span>
                      </button>
 
 

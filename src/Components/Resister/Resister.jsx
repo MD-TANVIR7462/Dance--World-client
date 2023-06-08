@@ -9,14 +9,14 @@ import Swal from 'sweetalert2';
 const Resister = () => {
 
    const imgHostingToken = import.meta.env.VITE_API_Token
-   console.log(imgHostingToken)
-const HostingURL = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`
+
+   const HostingURL = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`
 
 
    const { CreatUSerEmail, signOutUSer, updateUser } = useContext(AuthContext)
    const [error, setError] = useState('');
    const navigate = useNavigate();
- 
+
 
 
 
@@ -28,66 +28,90 @@ const HostingURL = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`
       const email = form.email.value;
       const password = form.password.value;
       const confirmPassword = form.confirmPassword.value;
-      const Image = form.image.files
-   
-      console.log({ email, password, confirmPassword, name });
-   
+      const image = form.image.files
+
+      console.log({ email, password, confirmPassword, name, image });
+
       if (password.length < 6) {
          setError("Password should be at least 6 characters long.");
          return;
       }
-   
+
       if (!/[a-z]/.test(password)) {
          setError("Password should contain at least one lowercase letter.");
          return;
       }
-   
+
       if (!/[A-Z]/.test(password)) {
          setError("Password should contain at least one capital letter.");
          return;
       }
-   
+
       if (!/[@$!%*?&]/.test(password)) {
          setError("Password should contain at least one special character.");
          return;
       }
-   
+
       if (password !== confirmPassword) {
          setError('Invalid password confirmation. Double-check your entry and try again.');
          return;
       }
-   
+      const formData = new FormData()
+      formData.append('image', image[0])
+
+
+
+
+
+
+      // ---------userCreation------------------>>>>>>>>
+
       CreatUSerEmail(email, password)
          .then((userCredential) => {
-            const user = userCredential.user;
-            console.log(user);
-   
-            updateUser(name)
-               .then(() => {
-                  signOutUSer();
-                  Swal.fire({
-                     position: 'top-center',
-                     icon: 'success',
-                     title: 'Register Successful. Login Now!',
-                     showConfirmButton: false,
-                     timer: 1500
-                  });
-                  navigate('/login');
-                  form.reset();
+      
+            fetch(HostingURL, {
+               method: 'POST',
+               body: formData
+
+            })
+               .then(res => res.json())
+               .then(data => {
+
+                
+                     const imageUrl = data.data.display_url
+                     console.log(imageUrl)
+                     updateUser(name, imageUrl)
+                     .then(() => {
+      
+                        signOutUSer();
+                        Swal.fire({
+                           position: 'top-center',
+                           icon: 'success',
+                           title: 'Register Successful. Login Now!',
+                           showConfirmButton: false,
+                           timer: 1500
+                        });
+                        navigate('/login');
+                        form.reset();
+                     })
+                     .catch(error => {
+                        setError(error.message);
+                     });
+
+                
                })
-               .catch(error => {
-                  setError(error.message);
-               });
+
+           
          })
          .catch((error) => {
             setError(error.message);
          });
    };
-   
-   
-   
+
+
+
    return (
-   
+
       <div className="min-h-screen flex items-center justify-center    bg-gradient-to-r from-pink-500 to-indigo-500 ">
          <div className="flex flex-col md:mt-20 md:flex-row w-full md:w-4/5 bg-gradient-to-r from-yellow-500 to-indigo-500 rounded-lg shadow-lg overflow-hidden">
             <div className="relative md:w-3/5">
@@ -189,9 +213,8 @@ const HostingURL = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`
                         </button>
                      </p>
                   </div>
-                  
+
                </form>
-<p>hellow</p>
             </div>
          </div>
       </div>
