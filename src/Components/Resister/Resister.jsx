@@ -8,17 +8,14 @@ import Swal from 'sweetalert2';
 
 const Resister = () => {
 
-   const imgHostingToken = import.meta.env.VITE_API_Token
+   // const imgHostingToken = import.meta.env.VITE_API_Token
 
-   const HostingURL = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`
+   // const HostingURL = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`
 
 
    const { CreatUSerEmail, signOutUSer, updateUser } = useContext(AuthContext)
    const [error, setError] = useState('');
    const navigate = useNavigate();
-
-
-
 
 
    const handleResiter = (e) => {
@@ -28,9 +25,11 @@ const Resister = () => {
       const email = form.email.value;
       const password = form.password.value;
       const confirmPassword = form.confirmPassword.value;
-      const image = form.image.files
+      // const image = form.image.files
+      const imageUrl = form.url.value
 
-      console.log({ email, password, confirmPassword, name, image });
+    const user = { name, imageUrl,email};
+    console.log(user)
 
       if (password.length < 6) {
          setError("Password should be at least 6 characters long.");
@@ -56,8 +55,8 @@ const Resister = () => {
          setError('Invalid password confirmation. Double-check your entry and try again.');
          return;
       }
-      const formData = new FormData()
-      formData.append('image', image[0])
+      // const formData = new FormData()
+      // formData.append('image', image[0])
 
 
 
@@ -67,23 +66,24 @@ const Resister = () => {
       // ---------userCreation------------------>>>>>>>>
 
       CreatUSerEmail(email, password)
-         .then((userCredential) => {
-      
-            fetch(HostingURL, {
-               method: 'POST',
-               body: formData
+         .then(() => {
 
-            })
-               .then(res => res.json())
-               .then(data => {
+            // fetch(HostingURL, {
+            //    method: 'POST',
+            //    body: formData
 
-                
-                     const imageUrl = data.data.display_url
-                     console.log(imageUrl)
-                     updateUser(name, imageUrl)
+            // })
+            //    .then(res => res.json())
+            //    .then(data => {
+
+
+                  // const imageUrl = data.data.display_url
+                 
+                  updateUser(name, imageUrl)
                      .then(() => {
-      
+
                         signOutUSer();
+                        navigate('/login');
                         Swal.fire({
                            position: 'top-center',
                            icon: 'success',
@@ -91,17 +91,19 @@ const Resister = () => {
                            showConfirmButton: false,
                            timer: 1500
                         });
-                        navigate('/login');
+
+
+                       
                         form.reset();
                      })
                      .catch(error => {
                         setError(error.message);
                      });
 
-                
-               })
 
-           
+               // })
+
+
          })
          .catch((error) => {
             setError(error.message);
@@ -184,7 +186,24 @@ const Resister = () => {
                      </div>
                   </div>
 
+
+
+
                   <div>
+                     <label htmlFor="email-address" className="block text-sm font-medium text-white mb-2">
+                        Image URL
+                     </label>
+                     <input
+                        name="url"
+                        type="url"
+
+                        required
+                        className="appearance-none block w-full px-4 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Enter Image Url"
+                     />
+                  </div>
+
+                  {/* <div>
                      <label className="block text-sm  text-white mb-2 font-medium">
                         Choose Your Profile
                      </label>
@@ -193,7 +212,7 @@ const Resister = () => {
 
 
                      </div>
-                  </div>
+                  </div> */}
                   {error && <p className="text-yellow-500">{error}</p>}
                   <div>
                      <p className="text-sm text-center md:text-left text-white">
@@ -203,15 +222,15 @@ const Resister = () => {
                         </Link>
                      </p>
                   </div>
-                  <div>
-                     <p className='flex justify-center'>
+                  <div className=' flex justify-center'>
+                    
                         <button
                            type="submit"
                            className="btn btn-warning btn-outline  w-5/6  rounded-lg shadow-lg hover:bg-gradient-to-r from-yellow-400 to-yellow-500  flex items-center justify-center space-x-2"
                         >
-                           Log in
+                           Resister
                         </button>
-                     </p>
+                    
                   </div>
 
                </form>
