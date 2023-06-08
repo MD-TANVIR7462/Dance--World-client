@@ -4,7 +4,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <div>
-      <footer className="footer p-10 bg-gradient-to-r from-pink-500 to-violet-500 text-white">
+      <footer className="footer p-10 bg-gradient-to-r from-pink-400 to-violet-400 text-white">
         <div className="flex items-center justify-between mb-8">
           <img src="https://i.ibb.co/f2YbNWG/a8e152ea86a0f346f14a90c42c342c6b.jpg" className="w-20 rounded-md" alt="" />
           <p className="font-semibold text-lg">Dance World<br />Providing reliable tech since 1992</p>

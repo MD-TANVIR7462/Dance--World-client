@@ -4,6 +4,7 @@ import useUsers from '../../../../Hooks/useUsers';
 const MenageUser = () => {
 const { users, refetch } = useUsers();
 
+
 const HandleInstractor = (id) => {
    
    fetch(`http://localhost:5000/allusers/instractor/${id}`,{
@@ -13,6 +14,19 @@ const HandleInstractor = (id) => {
    .then(data=>{
       console.log(data)
       refetch()
+     
+   })
+}
+const HandleAdmin = (id) => {
+   
+   fetch(`http://localhost:5000/allusers/admin/${id}`,{
+      method : 'PATCH'
+   })
+   .then(res=>res.json())
+   .then(data=>{
+      console.log(data)
+      refetch()
+     
    })
 }
 
@@ -38,13 +52,18 @@ const HandleInstractor = (id) => {
                   <td>{user.email}</td>
                   <td>{user?.role ? user.role : 'Student'}</td>
                   <td>
-                    <button onClick={()=>HandleInstractor(user._id)} className="btn btn-warning btn-outline btn-sm text-white font-bold hover:bg-green-700 transition-all">
-                      Make Instructor
+                  <button onClick={()=>HandleInstractor(user._id)} className="btn btn-warning  btn-sm text-white font-bold hover:bg-green-700 transition-all" disabled={user?.role==='instractor' || user?.role==='admin'}>
+                    Make Instractor
                     </button>
                   </td>
                   <td>
-                    <button className="btn btn-warning btn-outline btn-sm text-white font-bold hover:bg-red-700 transition-all">
-                      Make Admin
+                    <button onClick={()=>HandleAdmin(user._id)} className="btn btn-warning  btn-sm text-white font-bold hover:bg-red-700 transition-all" disabled={user?.role==='admin'}>
+                     <span>
+                     {
+                        user?.role === 'admin'? 'alredy Admin' : 'Make Admin'
+ 
+                     }
+                     </span>
                     </button>
                   </td>
                 </tr>
@@ -58,3 +77,5 @@ const HandleInstractor = (id) => {
 };
 
 export default MenageUser;
+
+
