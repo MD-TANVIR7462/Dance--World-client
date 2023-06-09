@@ -50,7 +50,7 @@ const HandleAdmin = (id) => {
                   <th>{index + 1}</th>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
-                  <td>{user?.role ? user.role : 'Student'}</td>
+                  <td>{user?.role ? user.role  : 'Student'}</td>
                   <td>
                   <button onClick={()=>HandleInstractor(user._id)} className="btn btn-warning  btn-sm text-white font-bold hover:bg-green-700 transition-all" disabled={user?.role==='instractor' || user?.role==='admin'}>
                     Make Instractor
