@@ -8,7 +8,7 @@ const Allinstructor = () => {
   const instructors = users?.filter(user => user?.role === "instructor");
 
   return (
-    <div className="bg-gradient-to-b from-pink-400 to-white">
+    <div className="pb-12 bg-gray-100">
       <div className="min-h-[800px] mx-auto">
         <Parallax bgImage="https://i.ibb.co/yF24jLv/group-contemporary-teens-pants-tanktops-repeating-after-dance-leader-274679-34618.jpg" strength={500}>
           <div className="hero min-h-[700px]">

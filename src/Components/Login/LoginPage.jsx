@@ -25,7 +25,7 @@ const LoginPage = () => {
 
         console.log(result);
         Swal.fire({
-          position: 'top-center',
+          position: 'top-right',
           icon: 'success',
           title: 'Login successful',
           showConfirmButton: false,
@@ -49,6 +49,13 @@ const LoginPage = () => {
     googleCreatUSer()
       .then((result) => {
 
+          const {displayName,email,photoURL}   =  result.user
+
+          const user = { name : displayName, image : photoURL,email : email};
+          console.log(user)
+
+    
+
 
         Swal.fire({
           position: 'top-center',
@@ -57,6 +64,20 @@ const LoginPage = () => {
           showConfirmButton: false,
           timer: 1500
         })
+
+
+        fetch('http://localhost:5000/allusersGoogle', {
+          method: 'POST',
+          headers: {
+             "content-type": "application/json"
+          },
+          body: JSON.stringify(user)
+       })
+          .then(res => res.json())
+          .then(data => {
+          })
+
+
         navigate(mainlocation)
 
 

@@ -1,52 +1,56 @@
-// import React from 'react';
-
-// const PopularCard = ({ Singleclass }) => {
-//   const { className, students, image, price, instructor } = Singleclass;
-
-//   return (
-//     <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-500 hover:scale-105">
-//       <img src={image} alt="class" className="w-full h-48 object-cover" />
-//       <div className="p-4">
-//         <h2 className="text-2xl font-bold mb-2">{className}</h2>
-//         <p className="text-gray-600 mb-4">
-//           <strong>Instructor:</strong> {instructor}
-//         </p>
-//         <p className="text-gray-600 mb-4">
-//           <strong>Students:</strong> {students}
-//         </p>
-//         <p className="text-gray-600 mb-4">
-//           <strong>Price:</strong> ${price}
-//         </p>
-//         <div className="flex justify-end">
-//           {/* Add any additional actions or buttons here */}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default PopularCard;
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../Provider/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 const PopularCard = ({ Singleclass }) => {
-  const { className, students, image, price, instructor } = Singleclass;
+  const {user} = useContext(AuthContext) 
+  const navigate = useNavigate()
+  const { className, students, image, price, instructor,totalSeats , Availableseats} = Singleclass;
+
+
+
+const handleSelect = (classes)=>{
+  const {Availableseats,className,  email, image,instructor,price,students,_id} = classes
+  
+  if(user){
+    console.log(user)
+const myCartdata =  {}
+  }
+  else{
+    navigate('/login')
+    }
+
+
+}
+
 
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-700 hover:scale-95">
       <img src={image} alt="class" className="  w-full h-48 object-cover transition duration-700 ease-in-out transform hover:scale-110 " />
-      <div className="p-4">
-        <h2 className="text-2xl font-bold mb-2 text-yellow-500" >{className}</h2>
-        <p className="text-gray-600 mb-4">
+      <div className=" p-4">
+       <div className=''>
+     
+       <h2 className="text-2xl font-bold mb-2 text-yellow-500" >{className}</h2>
+        <p className="text-gray-600 mb-2">
           <strong>Instructor:</strong> {instructor}
         </p>
-        <p className="text-gray-600 mb-4">
-          <strong>Students:</strong> {students}
-        </p>
-        <p className="text-gray-600 mb-4">
+        
+        <p className="text-gray-600 mb-2">
           <strong>Price:</strong> ${price}
         </p>
-        <div className="flex justify-end">
-          {/* Add any additional actions or buttons here */}
+      
+       
+       <p className="text-gray-600 mb-2">
+          <strong>Abailable-Seats :</strong> {Availableseats}
+        </p>
+        <p className="text-gray-600 mb-2">
+          <strong>Students :</strong> {students}
+        </p>
+     
+       </div>
+        <div className="flex justify-center">
+          
+          <button className='btn btn-warning btn-outline' onClick={()=>handleSelect(Singleclass)}>Book Mark</button>
         </div>
       </div>
     </div>

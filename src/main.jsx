@@ -15,6 +15,7 @@ import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
 import MenageUser from './Components/AdminComponents/MenageUser/MenageUser.jsx';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Allinstructor from './Components/InstractorComponents/InstractorPageComponennts/Allinstructor.jsx';
+import ClassPage from './Components/InstractorComponents/ClassPage/ClassPage.jsx';
 
 
 
@@ -49,7 +50,12 @@ const router = createBrowserRouter([
 
         path: "/instructors",
         element: <Allinstructor></Allinstructor>,
-      }
+      },
+      {
+
+        path: "/classes",
+        element: <ClassPage></ClassPage>,
+      },
     ]
   },
 ]);

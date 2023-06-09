@@ -60,23 +60,23 @@ const Resister = () => {
 
 
 
-      fetch('http://localhost:5000/allusers', {
-         method: 'POST',
-         headers: {
-            "content-type": "application/json"
-         },
-         body: JSON.stringify(user)
-      })
-         .then(res => res.json())
-         .then(data => {
-         })
+      
 
 
       // ---------userCreation------------------>>>>>>>>
 
       CreatUSerEmail(email, password)
          .then(() => {
-
+            fetch('http://localhost:5000/allusers', {
+               method: 'POST',
+               headers: {
+                  "content-type": "application/json"
+               },
+               body: JSON.stringify(user)
+            })
+               .then(res => res.json())
+               .then(data => {
+               })
             // fetch(HostingURL, {
             //    method: 'POST',
             //    body: formData
@@ -90,20 +90,8 @@ const Resister = () => {
                  
                   updateUser(name, imageUrl)
                      .then(() => {
-                        
-
                         signOutUSer();
                         navigate('/login');
-                        Swal.fire({
-                           position: 'top-center',
-                           icon: 'success',
-                           title: 'Register Successful. Login Now!',
-                           showConfirmButton: false,
-                           timer: 1500
-                        });
-
-
-                       
                         form.reset();
                      })
                      .catch(error => {
