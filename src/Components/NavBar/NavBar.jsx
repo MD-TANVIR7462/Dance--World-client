@@ -28,8 +28,8 @@ const NavBar = () => {
    const navOptions = <>
 
       <li className='text-lg'><Link to={'/'}>Home</Link></li>
-      <li className='text-lg'><Link to={'/Instructors'}>Instructors</Link></li>
-      <li className='text-lg'><Link to={'/Classes'}>Our Classes</Link></li>
+      <li className='text-lg'><Link to={'/instructors'}>Instructors</Link></li>
+      <li className='text-lg'><Link to={'/classes'}>Our Classes</Link></li>
       <li className='text-lg'><Link to={'/menageuser'}>users</Link></li>
 
 

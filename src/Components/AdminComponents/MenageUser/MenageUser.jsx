@@ -52,12 +52,16 @@ const HandleAdmin = (id) => {
                   <td>{user.email}</td>
                   <td>{user?.role ? user.role  : 'Student'}</td>
                   <td>
-                  <button onClick={()=>HandleInstractor(user._id)} className="btn btn-warning  btn-sm text-white font-bold hover:bg-green-700 transition-all" disabled={user?.role==='instractor' || user?.role==='admin'}>
-                    Make Instractor
+                  <button onClick={()=>HandleInstractor(user._id)} className="btn btn-warning  btn-sm text-white font-bold hover:bg-green-700 transition-all" 
+                  disabled={user?.role==='instructor' || user?.role==='admin'}
+                  >
+                    Make Instructor
                     </button>
                   </td>
                   <td>
-                    <button onClick={()=>HandleAdmin(user._id)} className="btn btn-warning  btn-sm text-white font-bold hover:bg-red-700 transition-all" disabled={user?.role==='admin'}>
+                    <button onClick={()=>HandleAdmin(user._id)} className="btn btn-warning  btn-sm text-white font-bold hover:bg-red-700 transition-all"
+                     disabled={user?.role==='admin'}
+                     >
                      <span>
                      {
                         user?.role === 'admin'? 'alredy Admin' : 'Make Admin'

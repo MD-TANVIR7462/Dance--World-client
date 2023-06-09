@@ -13,6 +13,7 @@ import AuthProvider from './Components/Provider/AuthProvider.jsx';
 import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
 import MenageUser from './Components/AdminComponents/MenageUser/MenageUser.jsx';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import Allinstructor from './Components/InstractorComponents/InstractorPageComponennts/Allinstructor.jsx';
 
 
 const queryClient = new QueryClient()
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
 
         path: "/menageuser",
         element: <MenageUser></MenageUser>,
+      },
+      {
+
+        path: "/instructors",
+        element: <Allinstructor></Allinstructor>,
       }
     ]
   },
