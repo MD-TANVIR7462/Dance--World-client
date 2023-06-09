@@ -6,6 +6,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
 import LoginPage from './Components/Login/LoginPage.jsx';
 import HomePage from './Pages/UserPages/HomePage/HomePage.jsx';
 import Resister from './Components/Resister/Resister.jsx';
@@ -14,6 +15,7 @@ import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
 import MenageUser from './Components/AdminComponents/MenageUser/MenageUser.jsx';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Allinstructor from './Components/InstractorComponents/InstractorPageComponennts/Allinstructor.jsx';
+
 
 
 const queryClient = new QueryClient()
@@ -53,11 +55,14 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+
   <React.StrictMode>
+  
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <RouterProvider router={router} />
       </AuthProvider>
     </QueryClientProvider>
+   
   </React.StrictMode>,
 )
