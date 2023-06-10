@@ -1,25 +1,22 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
+
+
+
 const PopularCard = ({ Singleclass }) => {
+
+
   const { User } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { className, students, image, price, instructor, Availableseats } = Singleclass;
-  const [isBookmarked, setIsBookmarked] = useState(false);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-
-  useEffect(() => {
-    const bookmarkedClasses = JSON.parse(localStorage.getItem('bookmarkedClasses')) || [];
-    const isClassBookmarked = bookmarkedClasses.some((bookmark) => bookmark._id === Singleclass._id);
-    setIsBookmarked(isClassBookmarked);
-  }, [Singleclass._id]);
+  const { className, students, image, price, instructor,  Availableseats } = Singleclass;
 
   const handleSelect = (classes) => {
+    
     const { Availableseats, className, email, image, instructor, price, students, _id } = classes;
 
     if (User) {
-      setIsButtonDisabled(true); // Disable the button
       const myCartdata = {
         Availableseats,
         className,
@@ -44,7 +41,20 @@ const PopularCard = ({ Singleclass }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.statusbar === 'Already Bookmarked') {
-            setIsBookmarked(true);
+          
+            toast.warn('🦄 Wow so easy!', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+              });
+          
+        
+          
           }
         });
     } else {
@@ -79,9 +89,9 @@ const PopularCard = ({ Singleclass }) => {
           <button
             className="btn btn-warning btn-outline"
             onClick={() => handleSelect(Singleclass)}
-            disabled={isButtonDisabled || isBookmarked}
+         
           >
-            {isBookmarked ? 'Bookmarked' : 'Bookmark'}
+            Book Mark
           </button>
         </div>
       </div>
@@ -90,3 +100,5 @@ const PopularCard = ({ Singleclass }) => {
 };
 
 export default PopularCard;
+
+

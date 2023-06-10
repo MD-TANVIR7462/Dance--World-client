@@ -41,7 +41,7 @@ const Dashboard = () => {
   if (findUser?.role === 'admin') {
     dashboardTitle = 'Admin Dashboard';
   } else if (findUser?.role === 'instructor') {
-    console.log('instructor Dashboard')
+ 
     dashboardTitle = 'Instructor Dashboard';
   } else {
     dashboardTitle = 'User Dashboard';
@@ -54,7 +54,7 @@ const Dashboard = () => {
         <aside className="bg-gradient-to-b from-purple-400 to-pink-400 text-white w-64 p-4">
           <div className="text-3xl font-bold mb-8 ">{dashboardTitle}</div>
           <ul className="space-y-4">
-            {/* Bookmarked Classes and Enrolled Classes */}
+         
             {!findUser?.role && (
               <>
                 <li>
@@ -78,7 +78,6 @@ const Dashboard = () => {
               </>
             )}
 
-            {/* Manage Classes and Manage Users */}
             {findUser?.role === 'admin' && (
               <>
                 <li>
@@ -102,7 +101,7 @@ const Dashboard = () => {
               </>
             )}
 
-            {/* Add a Class and My Classes */}
+         
             {findUser?.role === 'instructor' && (
               <>
                 <li>
@@ -126,7 +125,7 @@ const Dashboard = () => {
               </>
             )}
 
-            {/* Home and Orders */}
+         
             <div className="border-b border-purple-600 my-4" />
             <li>
               <Link

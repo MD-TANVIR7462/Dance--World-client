@@ -19,6 +19,7 @@ import ClassPage from './Components/InstractorComponents/ClassPage/ClassPage.jsx
 import Dashboard from './Dashbord/Dashboard.jsx';
 import UserDashBookmark from './Pages/UserPages/UserDashbordPages/UserDashBookmark/UserDashBookmark.jsx';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
+import AddAclass from './Components/InstractorComponents/AddAclass/AddAclass.jsx';
 
 
 
@@ -71,6 +72,11 @@ const router = createBrowserRouter([
 
         path: "/dashboard/menageuser",
         element: <MenageUser></MenageUser>,
+      },
+      {
+
+        path: "/dashboard/addaclass",
+        element: <AddAclass></AddAclass>,
       },
     ]
   }
