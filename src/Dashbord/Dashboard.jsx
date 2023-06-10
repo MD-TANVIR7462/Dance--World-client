@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import {
   AiFillStar,
@@ -8,11 +8,18 @@ import {
 } from 'react-icons/ai';
 import { BsFillGridFill, BsFillPeopleFill } from 'react-icons/bs';
 import useUsers from '../../Hooks/useUsers';
+import { AuthContext } from '../Components/Provider/AuthProvider';
+
+
 
 const Dashboard = () => {
-  const { users, refetch } = useUsers();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { User } = useContext(AuthContext)
+  const { users } = useUsers();
+
+  const activeUserEmail = User?.email
+  const findUser = users?.find(user => user?.email === activeUserEmail)
   useEffect(() => {
     const handleResize = () => {
       setIsSidebarOpen(window.innerWidth >= 768);
@@ -31,23 +38,24 @@ const Dashboard = () => {
   };
 
   let dashboardTitle = '';
-  if (users?.role === 'admin') {
+  if (findUser?.role === 'admin') {
     dashboardTitle = 'Admin Dashboard';
-  } else if (users?.role === 'instructor') {
+  } else if (findUser?.role === 'instructor') {
+    console.log('instructor Dashboard')
     dashboardTitle = 'Instructor Dashboard';
   } else {
     dashboardTitle = 'User Dashboard';
   }
 
   return (
-    <div className="flex h-screen">
+    <div className="flex min-h-screen">
       {/* Sidebar */}
       {isSidebarOpen && (
         <aside className="bg-gradient-to-b from-purple-400 to-pink-400 text-white w-64 p-4">
-          <div className="text-3xl font-bold mb-8">{dashboardTitle}</div>
+          <div className="text-3xl font-bold mb-8 ">{dashboardTitle}</div>
           <ul className="space-y-4">
             {/* Bookmarked Classes and Enrolled Classes */}
-            {!users?.role && (
+            {!findUser?.role && (
               <>
                 <li>
                   <Link
@@ -71,7 +79,7 @@ const Dashboard = () => {
             )}
 
             {/* Manage Classes and Manage Users */}
-            {users?.role === 'admin' && (
+            {findUser?.role === 'admin' && (
               <>
                 <li>
                   <Link
@@ -84,7 +92,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <Link
-                    to="/dashboard/manageusers"
+                    to="/dashboard/menageuser"
                     className="hover:text-purple-200 transition-colors duration-300 flex items-center"
                   >
                     <BsFillPeopleFill className="mr-2" />
@@ -95,7 +103,7 @@ const Dashboard = () => {
             )}
 
             {/* Add a Class and My Classes */}
-            {users?.role === 'instructor' && (
+            {findUser?.role === 'instructor' && (
               <>
                 <li>
                   <Link
@@ -131,11 +139,11 @@ const Dashboard = () => {
             </li>
             <li>
               <Link
-                to="/orders"
+                to="/classes"
                 className="hover:text-purple-200 transition-colors duration-300 flex items-center"
               >
                 <AiFillCheckCircle className="mr-2" />
-                <span>Orders</span>
+                <span>Our Classes</span>
               </Link>
             </li>
           </ul>
@@ -145,7 +153,7 @@ const Dashboard = () => {
       {/* Main Content */}
       <main className="flex-1 bg-gray-100 p-4">
         <div className="text-center md:text-left">
-          <h1 className="text-4xl font-semibold mb-8">Welcome, {users?.name}!</h1>
+          <h1 className="text-4xl text-center  mb-8 font-bold">Welcome, {findUser?.name}!</h1>
         </div>
         <div className="overflow-auto">
           <Outlet />
@@ -154,9 +162,8 @@ const Dashboard = () => {
 
       {/* Toggle Button */}
       <div
-        className={`fixed top-4 right-4 md:hidden bg-purple-400 p-2 rounded-full text-white cursor-pointer transition-colors duration-300 ${
-          isSidebarOpen ? 'hover:bg-purple-500' : 'hover:bg-purple-300'
-        }`}
+        className={`fixed top-4 right-4 md:hidden bg-purple-400 p-2 rounded-full text-white cursor-pointer transition-colors duration-300 ${isSidebarOpen ? 'hover:bg-purple-500' : 'hover:bg-purple-300'
+          }`}
         onClick={toggleSidebar}
       >
         {isSidebarOpen ? (

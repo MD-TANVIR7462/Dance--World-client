@@ -17,6 +17,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import Allinstructor from './Components/InstractorComponents/InstractorPageComponennts/Allinstructor.jsx';
 import ClassPage from './Components/InstractorComponents/ClassPage/ClassPage.jsx';
 import Dashboard from './Dashbord/Dashboard.jsx';
+import UserDashBookmark from './Pages/UserPages/UserDashbordPages/UserDashBookmark/UserDashBookmark.jsx';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
 
 
 
@@ -43,11 +45,7 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Resister></Resister>,
       },
-      {
-
-        path: "/menageuser",
-        element: <MenageUser></MenageUser>,
-      },
+    
       {
 
         path: "/instructors",
@@ -61,13 +59,19 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path:'/dashbord',
-    element : <Dashboard></Dashboard>,
-    errorElement : <ErrorPage></ErrorPage>,
-    children : [
+    path: '/dashboard',
+    element: <Dashboard></Dashboard>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/dashboard/bookmarkedclasses",
+        element: <PrivateRoute><UserDashBookmark></UserDashBookmark></PrivateRoute>
+      },
       {
 
-      }
+        path: "/dashboard/menageuser",
+        element: <MenageUser></MenageUser>,
+      },
     ]
   }
 ]);
@@ -75,12 +79,12 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
 
   <React.StrictMode>
-  
+
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <RouterProvider router={router} />
       </AuthProvider>
     </QueryClientProvider>
-   
+
   </React.StrictMode>,
 )

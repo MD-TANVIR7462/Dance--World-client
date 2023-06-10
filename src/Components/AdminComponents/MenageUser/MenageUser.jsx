@@ -31,10 +31,11 @@ const HandleAdmin = (id) => {
 }
 
   return (
-    <div className="min-h-screen  py-20 flex items-center justify-center  bg-gradient-to-b from-pink-400 to-white ">
-      <div className="w-full md:w-4/5 lg:w-3/4 xl:w-2/3 bg-white rounded-lg shadow-lg overflow-hidden">
+    // <div className="min-h-screen  flex items-center justify-center  ">
+      <div className="w-full md:w-5/5  bg-white rounded-lg shadow-lg overflow-hidden">
+      <h2 className='text-4xl font-bold text-center my-10'>Users !!</h2>
         <div className="overflow-x-auto">
-          <table className="table mx-auto my-10">
+          <table className="table mx-auto mb-10">
             <thead>
               <tr>
                 <th></th>
@@ -52,7 +53,7 @@ const HandleAdmin = (id) => {
                   <td>{user.email}</td>
                   <td>{user?.role ? user.role  : 'Student'}</td>
                   <td>
-                  <button onClick={()=>HandleInstractor(user._id)} className="btn btn-warning  btn-sm text-white font-bold hover:bg-green-700 transition-all" 
+                  <button onClick={()=>HandleInstractor(user._id)} className="btn btn-warning  btn-xs text-white font-bold hover:bg-green-700 transition-all" 
                   disabled={user?.role==='instructor' || user?.role==='admin'}
                   >
                    {
@@ -62,7 +63,7 @@ const HandleAdmin = (id) => {
                     </button>
                   </td>
                   <td>
-                    <button onClick={()=>HandleAdmin(user._id)} className="btn btn-warning  btn-sm text-white font-bold hover:bg-red-700 transition-all"
+                    <button onClick={()=>HandleAdmin(user._id)} className="btn btn-warning  btn-xs text-white font-bold hover:bg-red-700 transition-all"
                      disabled={user?.role==='admin'}
                      >
                      <span>
@@ -79,7 +80,7 @@ const HandleAdmin = (id) => {
           </table>
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
 
