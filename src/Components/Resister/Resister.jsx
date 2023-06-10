@@ -91,6 +91,11 @@ const Resister = () => {
                   updateUser(name, imageUrl)
                      .then(() => {
                         signOutUSer();
+                        // Swal.fire(
+                        //    'The Internet?',
+                        //    'That thing is still around?',
+                        //    'question'
+                        //  )
                         navigate('/login');
                         form.reset();
                      })

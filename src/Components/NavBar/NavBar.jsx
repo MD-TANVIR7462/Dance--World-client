@@ -45,7 +45,7 @@ const NavBar = () => {
                   <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-yellow-300">
                      {navOptions}
                      {
-                        User && <li  className='text-lg'><Link to={'/Dashboard'}>Dashboard</Link></li>
+                        User && <li  className='text-lg'><Link to={'/dashbord'}>Dashboard</Link></li>
                      }
 
                   </ul>
@@ -59,7 +59,7 @@ const NavBar = () => {
                <ul className="menu menu-horizontal px-1 text-yellow-300">
                   {navOptions}
                   {
-                     User && <li  className='text-lg'><Link to={'/Dashboard'}>Dashboard</Link></li>
+                     User && <li  className='text-lg'><Link to={'/dashbord'}>Dashboard</Link></li>
                   }
                </ul>
 

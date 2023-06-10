@@ -4,6 +4,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
 
+
 const PopulerClass = () => {
   const { User } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const PopulerClass = () => {
 
 
   const handleSelect = (classes) => {
+    
     const { Availableseats, className, email, image, instructor, price, students, _id } = classes;
 
     if (User) {
@@ -52,8 +54,19 @@ const PopulerClass = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.statusbar === 'Already Bookmarked') {
-          console.log('sfhjksd')
-         
+          
+            // toast.warn('🦄 Wow so easy!', {
+            //   position: "top-right",
+            //   autoClose: 5000,
+            //   hideProgressBar: false,
+            //   closeOnClick: true,
+            //   pauseOnHover: true,
+            //   draggable: true,
+            //   progress: undefined,
+            //   theme: "dark",
+            //   });
+          
+        
           
           }
         });
@@ -80,8 +93,11 @@ const PopulerClass = () => {
           {
             sortedClasses.map(Singleclass => <PopularCard key={Singleclass._id} Singleclass={Singleclass} handleSelect={handleSelect}></PopularCard>)
           }
+  
         </div>
+        
       </div>
+     
     </section>
 
   );

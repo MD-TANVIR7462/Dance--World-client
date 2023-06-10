@@ -16,6 +16,8 @@ import MenageUser from './Components/AdminComponents/MenageUser/MenageUser.jsx';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Allinstructor from './Components/InstractorComponents/InstractorPageComponennts/Allinstructor.jsx';
 import ClassPage from './Components/InstractorComponents/ClassPage/ClassPage.jsx';
+import Dashboard from './Dashbord/Dashboard.jsx';
+
 
 
 
@@ -58,6 +60,16 @@ const router = createBrowserRouter([
       },
     ]
   },
+  {
+    path:'/dashbord',
+    element : <Dashboard></Dashboard>,
+    errorElement : <ErrorPage></ErrorPage>,
+    children : [
+      {
+
+      }
+    ]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
