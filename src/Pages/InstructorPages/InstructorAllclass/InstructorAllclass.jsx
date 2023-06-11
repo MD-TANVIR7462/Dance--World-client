@@ -5,24 +5,31 @@ import { useNavigate } from 'react-router-dom';
 
 const InstructorAllclass = () => {
    const [classes, setClasses] = useState([]);
+   const [feedback, Setfeedback] = useState('')
    const { User } = useContext(AuthContext);
    const navigate = useNavigate()
- useEffect(() => {
+   useEffect(() => {
       fetch(`http://localhost:5000/instructorclasses?email=${User?.email}`)
          .then(res => res.json())
          .then(data => {
-            console.log(data);
+         
             setClasses(data);
          });
    }, [User]);
 
 
-   const updateDetails =(id)=>{
+   const updateDetails = (id) => {
       navigate(`/dashboard/updateDetails/${id}`)
-         }
+   }
 
 
-
+const FeedbackHandle = (_id)=>{
+   console.log(_id);
+   fetch(`http://localhost:5000/instructorclasses/${_id}`)
+   .then(res=>res.json())
+   .then(data=>Setfeedback(data.Feedback))
+   window.my_modal_1.showModal()
+}
 
 
    return (
@@ -54,13 +61,19 @@ const InstructorAllclass = () => {
                         <td className="ps-10">{cart?.students}</td>
                         <td className="font-semibold">{cart?.status}</td>
                         <td>
-                           <button className="btn btn-warning btn-outline btn-sm text-white font-bold hover:bg-warning transition-all">
-                              Feedbacks
+                           <button
+                           disabled={!cart?.Feedback}
+                              onClick={()=> FeedbackHandle(cart?._id)}
+                              className="btn btn-primary btn-outline btn-sm text-white font-bold hover:bg-warning transition-all">
+                              {
+                                 cart?.Feedback ? "See Feedback" : "No Feedback"
+
+                              }
                            </button>
                         </td>
                         <td>
                            <button
-                          onClick={()=>updateDetails(cart._id)}    className="btn btn-primary btn-outline btn-sm text-white font-bold hover:bg-primary "
+                              onClick={() => updateDetails(cart._id)} className="btn btn-primary btn-outline btn-sm text-white font-bold hover:bg-primary "
                            >
                               Update
                            </button>
@@ -70,8 +83,27 @@ const InstructorAllclass = () => {
                </tbody>
             </table>
          </div>
+         <dialog id="my_modal_1" className="modal">
+            <form method="dialog" className="modal-box">
+               <h3 className="font-bold text-lg">Hellow {User?.displayName}</h3>
+               <p className="py-4"><span className='text-black font-bold underline'>From Admin  </span> : {feedback}</p>
+               <div className="modal-action">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn">Close</button>
+               </div>
+            </form>
+         </dialog>
       </div>
    );
 };
 
 export default InstructorAllclass;
+
+
+
+
+
+{/* Open the modal using ID.showModal() method */ }
+{/* <button className="btn" >open modal</button> */ }
+
+

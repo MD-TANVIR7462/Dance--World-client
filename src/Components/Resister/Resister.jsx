@@ -8,9 +8,7 @@ import Swal from 'sweetalert2';
 
 const Resister = () => {
 
-   // const imgHostingToken = import.meta.env.VITE_API_Token
 
-   // const HostingURL = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`
 
 
    const { CreatUSerEmail, signOutUSer, updateUser } = useContext(AuthContext)
@@ -25,7 +23,7 @@ const Resister = () => {
       const email = form.email.value;
       const password = form.password.value;
       const confirmPassword = form.confirmPassword.value;
-      // const image = form.image.files
+   
       const imageUrl = form.url.value
 
     const user = { name : name, image : imageUrl,email : email};
@@ -55,9 +53,7 @@ const Resister = () => {
          setError('Invalid password confirmation. Double-check your entry and try again.');
          return;
       }
-      // const formData = new FormData()
-      // formData.append('image', image[0])
-
+    
 
 
       
@@ -77,25 +73,19 @@ const Resister = () => {
                .then(res => res.json())
                .then(data => {
                })
-            // fetch(HostingURL, {
-            //    method: 'POST',
-            //    body: formData
-
-            // })
-            //    .then(res => res.json())
-            //    .then(data => {
-
-
-                  // const imageUrl = data.data.display_url
+        
                  
                   updateUser(name, imageUrl)
                      .then(() => {
                         signOutUSer();
-                        // Swal.fire(
-                        //    'The Internet?',
-                        //    'That thing is still around?',
-                        //    'question'
-                        //  )
+                       
+                        Swal.fire({
+                           position: 'top-center',
+                           icon: 'success',
+                           title: 'resister Successful Login Now !!',
+                           showConfirmButton: false,
+                           timer: 1500
+                         })
                         navigate('/login');
                         form.reset();
                      })
