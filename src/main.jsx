@@ -20,6 +20,7 @@ import Dashboard from './Dashbord/Dashboard.jsx';
 import UserDashBookmark from './Pages/UserPages/UserDashbordPages/UserDashBookmark/UserDashBookmark.jsx';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
 import AddAclass from './Components/InstractorComponents/AddAclass/AddAclass.jsx';
+import InstructorAllclass from './Pages/InstructorPages/InstructorAllclass/InstructorAllclass.jsx';
 
 
 
@@ -77,6 +78,11 @@ const router = createBrowserRouter([
 
         path: "/dashboard/addaclass",
         element: <AddAclass></AddAclass>,
+      },
+      {
+
+        path: "/dashboard/ALlclassesIns",
+        element: <InstructorAllclass></InstructorAllclass>,
       },
     ]
   }

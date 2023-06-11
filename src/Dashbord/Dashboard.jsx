@@ -115,7 +115,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <Link
-                    to="/dashboard/myclasses"
+                    to="/dashboard/ALlclassesIns"
                     className="hover:text-purple-200 transition-colors duration-300 flex items-center"
                   >
                     <AiOutlineUser className="mr-2" />
