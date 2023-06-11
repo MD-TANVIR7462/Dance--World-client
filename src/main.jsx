@@ -28,6 +28,7 @@ import AdminMenageClass from './Pages/AdminPages/AdminMenageClass/AdminMenageCla
 
 
 
+
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
@@ -106,6 +107,11 @@ const router = createBrowserRouter([
         path: "/dashboard/manageclasses",
         element:<AdminMenageClass></AdminMenageClass>,
       },
+      // {
+
+      //   path: "/dashboard/test",
+      //   element:<Test></Test>,
+      // },
 
 
     ]

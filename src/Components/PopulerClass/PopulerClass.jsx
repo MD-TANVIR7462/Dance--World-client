@@ -13,7 +13,7 @@ const PopulerClass = () => {
       .then(res => res.json())
       .then(data => {
         if (data.length > 6) {
-          console.log(data)
+    
      const newdata =data.filter(singleData => singleData.status === "Approve")
    console.log(newdata)
    setClass(newdata.slice(0,6))
