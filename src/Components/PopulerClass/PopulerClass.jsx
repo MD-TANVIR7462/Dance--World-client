@@ -13,11 +13,15 @@ const PopulerClass = () => {
       .then(res => res.json())
       .then(data => {
         if (data.length > 6) {
-          setClass(data.slice(0, 6))
+          console.log(data)
+     const newdata =data.filter(singleData => singleData.status === "Approve")
+   console.log(newdata)
+   setClass(newdata.slice(0,6))
         }
         else {
           setClass(data)
-        }
+        } 
+       
 
       })
   }, [])
@@ -25,7 +29,6 @@ const PopulerClass = () => {
 
 
   const sortedClasses = classes.sort((a, b) => b.students - a.students);
-
 
 
   return (

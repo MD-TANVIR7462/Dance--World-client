@@ -93,7 +93,7 @@ const Dashboard = () => {
                     to="/dashboard/manageclasses"
                     className="hover:text-purple-200 transition-colors duration-300 flex items-center"
                   >
-                    <BsFillGridFill className="mr-2" />
+                    <AiFillCheckCircle className="mr-2" />
                     <span>Manage Classes</span>
                   </Link>
                 </li>

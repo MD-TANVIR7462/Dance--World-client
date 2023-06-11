@@ -23,6 +23,7 @@ import AddAclass from './Components/InstractorComponents/AddAclass/AddAclass.jsx
 import InstructorAllclass from './Pages/InstructorPages/InstructorAllclass/InstructorAllclass.jsx';
 import DashboardHome from './Dashbord/DashboardHome/DashboardHome.jsx';
 import UpdateFrom from './Pages/InstructorPages/UpdateFrom/UpdateFrom.jsx';
+import AdminMenageClass from './Pages/AdminPages/AdminMenageClass/AdminMenageClass.jsx';
 
 
 
@@ -75,11 +76,9 @@ const router = createBrowserRouter([
         path: "/dashboard/bookmarkedclasses",
         element: <PrivateRoute><UserDashBookmark></UserDashBookmark></PrivateRoute>
       },
-      {
 
-        path: "/dashboard/menageuser",
-        element: <MenageUser></MenageUser>,
-      },
+
+      // instructor route==========>>>
       {
 
         path: "/dashboard/addaclass",
@@ -96,6 +95,19 @@ const router = createBrowserRouter([
         loader:({params})=>fetch(`http://localhost:5000/instructorclasses/${params.id}`)
        
       },
+        // admin routes ===========>>>>  
+      {
+
+        path: "/dashboard/menageuser",
+        element: <MenageUser></MenageUser>,
+      },
+      {
+
+        path: "/dashboard/manageclasses",
+        element:<AdminMenageClass></AdminMenageClass>,
+      },
+
+
     ]
   }
 ]);

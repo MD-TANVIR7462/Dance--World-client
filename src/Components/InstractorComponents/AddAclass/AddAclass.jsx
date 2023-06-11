@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from "sweetalert2";
 import { AuthContext } from '../../Provider/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 
 const imgHostingToken = import.meta.env.VITE_API_Token
@@ -10,7 +11,7 @@ const imgHostingToken = import.meta.env.VITE_API_Token
 
 const AddAclass = () => {
    const { User } = useContext(AuthContext)
-   console.log(User?.displayName)
+ const navigate = useNavigate()
 
    const { register, handleSubmit, reset } = useForm();
    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`
@@ -49,6 +50,7 @@ const AddAclass = () => {
                   showConfirmButton: false,
                   timer: 1500,
                })
+               navigate('/dashboard')
                reset()
              
              })
@@ -127,7 +129,7 @@ const AddAclass = () => {
    <input
       className="btn btn-warning btn-neutral  mt-4 px-6 py-3 text-white rounded"
       type="submit"
-      value="Add Item"
+      value="Add Class"
    />
    </p>
 </form>
