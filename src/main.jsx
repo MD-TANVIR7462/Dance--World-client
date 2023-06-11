@@ -21,6 +21,8 @@ import UserDashBookmark from './Pages/UserPages/UserDashbordPages/UserDashBookma
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
 import AddAclass from './Components/InstractorComponents/AddAclass/AddAclass.jsx';
 import InstructorAllclass from './Pages/InstructorPages/InstructorAllclass/InstructorAllclass.jsx';
+import DashboardHome from './Dashbord/DashboardHome/DashboardHome.jsx';
+import UpdateFrom from './Pages/InstructorPages/UpdateFrom/UpdateFrom.jsx';
 
 
 
@@ -66,6 +68,10 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
+        path: '/dashboard',
+        element:<DashboardHome></DashboardHome> 
+      },
+      {
         path: "/dashboard/bookmarkedclasses",
         element: <PrivateRoute><UserDashBookmark></UserDashBookmark></PrivateRoute>
       },
@@ -83,6 +89,12 @@ const router = createBrowserRouter([
 
         path: "/dashboard/ALlclassesIns",
         element: <InstructorAllclass></InstructorAllclass>,
+      },
+      {
+        path: '/dashboard/updateDetails/:id',
+        element:<UpdateFrom></UpdateFrom>,
+        loader:({params})=>fetch(`http://localhost:5000/instructorclasses/${params.id}`)
+       
       },
     ]
   }

@@ -54,7 +54,15 @@ const Dashboard = () => {
         <aside className="bg-gradient-to-b from-purple-400 to-pink-400 text-white w-64 p-4">
           <div className="text-3xl font-bold mb-8 ">{dashboardTitle}</div>
           <ul className="space-y-4">
-         
+         <li>
+         <Link
+                    to="/dashboard"
+                    className="hover:text-purple-200 transition-colors duration-300 flex items-center"
+                  >
+                   <BsFillGridFill className="mr-2" />
+                    <span>Dashboard Home</span>
+                  </Link>
+         </li>
             {!findUser?.role && (
               <>
                 <li>
@@ -159,7 +167,7 @@ const Dashboard = () => {
         </div>
       </main>
 
-      {/* Toggle Button */}
+
       <div
         className={`fixed top-4 right-4 md:hidden bg-purple-400 p-2 rounded-full text-white cursor-pointer transition-colors duration-300 ${isSidebarOpen ? 'hover:bg-purple-500' : 'hover:bg-purple-300'
           }`}
