@@ -24,6 +24,7 @@ fetch(`http://localhost:5000/mybookmark?email=${User?.email}`)
        <thead>
          <tr className="text-white bg-purple-400">
             <th></th>
+            <th></th>
            <th>Class Name</th>
            <th>Instructor </th>
            <th>Price</th>
@@ -38,15 +39,16 @@ fetch(`http://localhost:5000/mybookmark?email=${User?.email}`)
               {carts?.map((cart, index) => (
                 <tr key={cart._id}>
                   <th>{index + 1}</th>
+                  <td><img src={cart.classImage} className='w-24 rounded-xl ' alt="" /></td>
                   <td>{cart.className}</td>
                   <td>{cart.insName}</td>
                   <td>{cart.price} $</td>
                   <td className='ps-10'>{cart.Availableseats}</td>
                   <td>
-                  <button  className="btn btn-warning btn-outline btn-xs text-white font-bold hover:bg-warning transition-all" >Delete</button>
+                  <button  className="btn btn-warning btn-outline btn-sm text-white font-bold hover:bg-warning transition-all" >Delete</button>
                   </td>
                   <td>
-                    <button  className="btn btn-primary btn-outline btn-xs text-white font-bold hover:bg-primary transition-all">Pay</button>
+                    <button  className="btn btn-primary btn-outline btn-sm text-white font-bold hover:bg-primary transition-all">Pay</button>
                   </td>
                 </tr>
               ))}

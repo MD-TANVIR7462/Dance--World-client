@@ -61,74 +61,78 @@ const AddAclass = () => {
    return (
       <div className="w-full px-10">
 
-         <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control grid grid-cols-2 gap-5
+<form onSubmit={handleSubmit(onSubmit)} className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6">
+   <div className="grid grid-cols-2 gap-4 mb-6">
+      <div>
+         <label className="block text-gray-700 font-semibold mb-2">Class Name*</label>
+         <input
+            type="text"
+            placeholder="Class Name"
+            {...register("className", { required: true, maxLength: 120 })}
+            className="input input-bordered w-full p-2"
+         />
+      </div>
+      <div>
+         <label className="block text-gray-700 font-semibold mb-2">Instructor Name*</label>
+         <input
+            type="text"
+            placeholder="Instructor Name"
+            {...register("instructor", { required: true, maxLength: 120 })}
+            className="input input-bordered w-full p-2"
+            readOnly
+            value={User?.displayName}
+         />
+      </div>
+   </div>
+   <div className="mb-6">
+      <label className="block text-gray-700 font-semibold mb-2">Instructor Email*</label>
+      <input
+         type="email"
+         placeholder="Instructor Email"
+         {...register("email", { required: true, maxLength: 120 })}
+         className="input input-bordered w-full p-2"
+         readOnly
+         value={User?.email}
+      />
+   </div>
+   <div className="grid grid-cols-2 gap-4 mb-6">
+      <div>
+         <label className="block text-gray-700 font-semibold mb-2">Price*</label>
+         <input
+            type="number"
+            {...register("price", { required: true })}
+            placeholder="Price"
+            className="input input-bordered w-full p-2"
+         />
+      </div>
+      <div>
+         <label className="block text-gray-700 font-semibold mb-2">Seats*</label>
+         <input
+            type="number"
+            {...register("Availableseats", { required: true })}
+            placeholder="Available Seats"
+            className="input input-bordered w-full p-2"
+         />
+      </div>
+   </div>
+   <div className="mb-6">
+      <label className="block text-gray-700 font-semibold mb-2">Class Image*</label>
+      <input
+         type="file"
+         {...register("image", { required: true })}
+         className="file-input file-input-bordered file-input-warning  w-full "
+      />
+   </div>
+   <p className='text-center'>
+   <input
+      className="btn btn-warning btn-neutral  mt-4 px-6 py-3 text-white rounded"
+      type="submit"
+      value="Add Item"
+   />
+   </p>
+</form>
 
-                mb-4">
-               <div>
-                  <label className="label">
-                     <span className="label-text font-semibold">Class Name*</span>
-                  </label>
-                  <input type="text" placeholder="className"
-                     {...register("className", { required: true, maxLength: 120 })}
-                     className="input input-bordered w-full " />
-               </div>
-               <div>
-                  <label className="label">
-                     <span className="label-text font-semibold">Instructor Name*</span>
-                  </label>
-                  <input
-                     type="text"
-                     placeholder="Instructor Name"
-                     {...register("instructor", {
-                        required: true,
-                        maxLength: 120
-                     })}
-                     className="input input-bordered w-full"
-                     readOnly
-                     value={User?.displayName}
-                  />
-               </div>
-            </div>
-            <div className="flex my-4">
-               <div className="form-control w-full ">
-                  <label className="label">
-                     <span className="label-text font-semibold">Instructor email*</span>
-                  </label>
-                  <input
-                     type="email"
-                     placeholder="Instructor email"
-                     {...register("email", {
-                        required: true,
-                        maxLength: 120
-                     })}
-                     className="input input-bordered w-full"
-                     readOnly
-                     value={User?.email}
-                  />
-               </div>
-               <div className="form-control w-full ml-4">
-                  <label className="label">
-                     <span className="label-text font-semibold">Price*</span>
-                  </label>
-                  <input type="number" {...register("price", { required: true })} placeholder="Type here" className="input input-bordered w-full " />
-               </div>
-               <div className="form-control w-full ml-4">
-                  <label className="label">
-                     <span className="label-text font-semibold">Seats*</span>
-                  </label>
-                  <input type="number" {...register("Availableseats", { required: true })} placeholder="Type here" className="input input-bordered w-full " />
-               </div>
-            </div>
 
-            <div className="form-control w-full my-4">
-               <label className="label">
-                  <span className="label-text">Class Image*</span>
-               </label>
-               <input type="file"  {...register("image", { required: true })} className="file-input file-input-bordered w-full " />
-            </div>
-            <input className="btn btn-warning btn-sm mt-4" type="submit" value="Add Item" />
-         </form>
       </div>
    );
 };

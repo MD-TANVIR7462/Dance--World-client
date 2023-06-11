@@ -39,6 +39,7 @@ const HandleAdmin = (id) => {
             <thead>
               <tr>
                 <th></th>
+                <th></th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Role</th>
@@ -49,6 +50,7 @@ const HandleAdmin = (id) => {
               {users?.map((user, index) => (
                 <tr key={user._id}>
                   <th>{index + 1}</th>
+                  <th><img src={user.image} className='w-20 rounded-xl ' alt="" /></th>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user?.role ? user.role  : 'Student'}</td>
