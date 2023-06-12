@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaBeer } from 'react-icons/fa';
+import { FaEye } from "react-icons/fa";
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 
@@ -66,7 +66,7 @@ const LoginPage = () => {
         })
 
 
-        fetch('http://localhost:5000/allusersGoogle', {
+        fetch('https://ass-12-server-mu.vercel.app/allusersGoogle', {
           method: 'POST',
           headers: {
              "content-type": "application/json"
@@ -90,11 +90,11 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center  bg-gradient-to-r from-pink-500 to-indigo-500 ">
+    <div className="min-h-screen flex items-center justify-center  bg-gradient-to-r from-pink-300 to-indigo-400 ">
       <div className="flex flex-col md:flex-row w-full md:w-4/5 bg-gradient-to-r from-yellow-500 to-indigo-500 rounded-lg shadow-lg overflow-hidden">
         <div className="relative md:w-3/5">
           <img
-            src={'https://i.ibb.co/1qbXWYH/the-dance-academy-lehi-empowering-young-dancers-leaping-1800-sm.jpg'}
+            src={'https://i.ibb.co/qnQt4Yc/Laughing-Samurai-Pros-and-Cons-of-Using-Animations-in-Your-Web-Design-scaled.jpg'}
             alt="Background"
             className="w-full h-full object-cover"
           />
@@ -130,27 +130,13 @@ const LoginPage = () => {
                 />
                 <button
                   type="button"
-                  className="absolute top-1/2 right-3 transform -translate-y-1/2 focus:outline-none"
+                  className="absolute top-1/2 right-3 text-xl transform -translate-y-1/2 focus:outline-none"
                   onClick={() => {
                     const passwordInput = document.querySelector('input[name="password"]');
                     passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
                   }}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 text-gray-500"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.36 6.36a9 9 0 10-12.73 0M2.83 2.83l18.34 18.34" />
-                  </svg>
+              <FaEye/>
                 </button>
               </div>
             </div>

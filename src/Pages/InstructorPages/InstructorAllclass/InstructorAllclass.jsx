@@ -9,7 +9,7 @@ const InstructorAllclass = () => {
    const { User } = useContext(AuthContext);
    const navigate = useNavigate()
    useEffect(() => {
-      fetch(`http://localhost:5000/instructorclasses?email=${User?.email}`)
+      fetch(`https://ass-12-server-mu.vercel.app/instructorclasses?email=${User?.email}`)
          .then(res => res.json())
          .then(data => {
          
@@ -25,7 +25,7 @@ const InstructorAllclass = () => {
 
 const FeedbackHandle = (_id)=>{
    console.log(_id);
-   fetch(`http://localhost:5000/instructorclasses/${_id}`)
+   fetch(`https://ass-12-server-mu.vercel.app/instructorclasses/${_id}`)
    .then(res=>res.json())
    .then(data=>Setfeedback(data.Feedback))
    window.my_modal_1.showModal()

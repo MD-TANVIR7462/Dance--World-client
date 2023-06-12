@@ -5,7 +5,8 @@ import UseRole from '../../../Hooks/UseRole';
 
 
 
-const PrivateRoute = ({children}) => {
+
+const IstrctorPrivate = ({children}) => {
    const { findUser } = UseRole()
    const location = useLocation()
    // console.log(location)
@@ -16,18 +17,15 @@ if(loading){
       <progress className="progress  w-56"></progress>
    </div>
 }
-if(User && !findUser?.role){
+if(User && findUser.role ==="instructor"){
    return children
 }
-if(User && findUser.role){
-   return <Navigate to="/" />
-}
 else{
-  return <Navigate state={{from:location}} to={'/login'} replace={true}></Navigate>
+  return <Navigate state={{from:location}} to={'/'} replace={true}></Navigate>
 }
 
       
    };
 
 
-export default PrivateRoute;
+export default IstrctorPrivate;

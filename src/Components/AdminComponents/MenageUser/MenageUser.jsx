@@ -7,7 +7,7 @@ const { users, refetch } = useUsers();
 
 const HandleInstractor = (id) => {
    
-   fetch(`http://localhost:5000/allusers/instractor/${id}`,{
+   fetch(`https://ass-12-server-mu.vercel.app/allusers/instractor/${id}`,{
       method : 'PATCH'
    })
    .then(res=>res.json())
@@ -19,7 +19,7 @@ const HandleInstractor = (id) => {
 }
 const HandleAdmin = (id) => {
    
-   fetch(`http://localhost:5000/allusers/admin/${id}`,{
+   fetch(`https://ass-12-server-mu.vercel.app/allusers/admin/${id}`,{
       method : 'PATCH'
    })
    .then(res=>res.json())

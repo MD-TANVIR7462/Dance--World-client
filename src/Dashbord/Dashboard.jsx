@@ -49,7 +49,7 @@ const Dashboard = () => {
 
   return (
     <div className="flex min-h-screen">
-      {/* Sidebar */}
+    
       {isSidebarOpen && (
         <aside className="bg-gradient-to-b from-purple-400 to-pink-400 text-white w-64 p-4">
           <div className="text-3xl font-bold mb-8 ">{dashboardTitle}</div>
@@ -157,7 +157,7 @@ const Dashboard = () => {
         </aside>
       )}
 
-      {/* Main Content */}
+
       <main className="flex-1 bg-gray-100 p-4">
         <div className="text-center md:text-left">
           <h1 className="text-4xl text-center  mb-8 font-bold">Welcome, {findUser?.name}!</h1>

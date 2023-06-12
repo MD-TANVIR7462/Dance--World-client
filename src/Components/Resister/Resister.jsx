@@ -63,7 +63,7 @@ const Resister = () => {
 
       CreatUSerEmail(email, password)
          .then(() => {
-            fetch('http://localhost:5000/allusers', {
+            fetch('https://ass-12-server-mu.vercel.app/allusers', {
                method: 'POST',
                headers: {
                   "content-type": "application/json"
@@ -107,11 +107,11 @@ const Resister = () => {
 
    return (
 
-      <div className="min-h-screen flex items-center justify-center    bg-gradient-to-r from-pink-500 to-indigo-500 ">
+      <div className="min-h-screen flex items-center justify-center    bg-gradient-to-r from-pink-300 to-indigo-400 ">
          <div className="flex flex-col md:mt-20 md:flex-row w-full md:w-4/5 bg-gradient-to-r from-yellow-500 to-indigo-500 rounded-lg shadow-lg overflow-hidden">
             <div className="relative md:w-3/5">
                <img
-                  src={'https://i.ibb.co/Y821mX7/3333-MConverter-eu.jpg'}
+                  src={'https://i.ibb.co/gy4ngF2/istockphoto-1201846513-612x612.jpg'}
                   alt="Background"
                   className="w-full h-full object-cover"
                />

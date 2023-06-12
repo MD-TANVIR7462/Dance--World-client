@@ -2,8 +2,11 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../../Components/Provider/AuthProvider';
 import useChart from '../../../../../Hooks/useChart';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const PaymentFrom = ({price,newPay}) => {
+  const navigate = useNavigate()
   const { Chart, refetch } = useChart()
   const [clientSecret, setClientSecret] = useState("");
    const [cardError, setCardError] = useState('')
@@ -16,7 +19,7 @@ const PaymentFrom = ({price,newPay}) => {
 
    useEffect(() => {
       // Create PaymentIntent as soon as the page loads
-      fetch("http://localhost:5000/create-payment-intent", {
+      fetch("https://ass-12-server-mu.vercel.app/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({price}),
@@ -100,21 +103,32 @@ oldId,
   userName,
   
   userEmail } = newPay
-console.log(students);
-
-const newdata = {bookamekID : _id,Availableseats : Availableseats-1,className,instructorEmail,insName,price,students : students+1,classImage,userName,userEmail,tranjectId,oldId}
 
 
-console.log(newdata)
+const date = new Date()
 
-fetch('http://localhost:5000/paymentcomplete',{
+
+
+const newdata = {bookamekID : _id,Availableseats : Availableseats-1,className,instructorEmail,insName,price,students : students+1,classImage,userName,userEmail,tranjectId,oldId,date}
+
+
+
+
+fetch('https://ass-12-server-mu.vercel.app/paymentcomplete',{
   method: 'POST',
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newdata),
 })
 .then(res=>res.json())
 .then(data=>{
-  console.log(data)
+  Swal.fire({
+    position: 'top-center',
+    icon: 'success',
+    title: 'Payment Succefully',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  navigate('/dashboard/bookmarkedclasses')
   refetch()
 })
 

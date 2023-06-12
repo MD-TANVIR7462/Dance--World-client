@@ -37,7 +37,7 @@ const UpdateFrom = () => {
                   Availableseats
                };
               
-        fetch(`http://localhost:5000/classupdate/${_id}`, {
+        fetch(`https://ass-12-server-mu.vercel.app/classupdate/${_id}`, {
                   method: "PATCH",
                   headers: {
                     "content-type": 'application/json'

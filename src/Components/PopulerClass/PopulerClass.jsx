@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PopularCard from './PopularCard';
+import SectionTitle from '../SectionTitle/SectionTitle';
 
 
 
@@ -9,7 +10,7 @@ const PopulerClass = () => {
   const [classes, setClass] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:5000/instractorclass')
+    fetch('https://ass-12-server-mu.vercel.app/instractorclass')
       .then(res => res.json())
       .then(data => {
       
@@ -31,9 +32,10 @@ const PopulerClass = () => {
   return (
 
 
-    <section className="bg-gray-100 pt-32 pb-10">
+    <section className="bg-gray-100 pt-32 pb-32">
       <div className="container mx-auto w-11/12 ">
-        <h2 className="text-3xl font-bold text-center mb-16 ">Popular Classes</h2>
+        <SectionTitle title ={"Popular Classes"}></SectionTitle>
+        {/* <h2 className="text-3xl font-bold text-center mb-16 ">Popular Classes</h2> */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10" >
           {
             sortedClasses.map(Singleclass => <PopularCard key={Singleclass._id} Singleclass={Singleclass} ></PopularCard>)

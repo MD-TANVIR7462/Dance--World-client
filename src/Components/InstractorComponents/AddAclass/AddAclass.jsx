@@ -37,7 +37,7 @@ const AddAclass = () => {
                
                const newItem = { className, price : newPrice , email, instructor, image: imgURL, Availableseats : newSeats , students: 0, status: "pending" }
                console.log(newItem)
-               fetch('http://localhost:5000/addaclass', {
+               fetch('https://ass-12-server-mu.vercel.app/addaclass', {
                   method: 'POST',
 
                   headers: {

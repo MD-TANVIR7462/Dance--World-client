@@ -2,6 +2,7 @@ import React from 'react';
 import useUsers from '../../../Hooks/useUsers';
 
 import PopulerInstractor from './PopulerInstractor';
+import SectionTitle from '../SectionTitle/SectionTitle';
 
 
 const InstractorMain = () => {
@@ -12,7 +13,7 @@ const InstractorMain = () => {
   return (
     <section className="bg-gray-100 py-20">
       <div className="container mx-auto w-11/12">
-        <h2 className="text-3xl font-bold text-center mb-16">Top Instructors </h2>
+    <SectionTitle title={"Top Instructors "}></SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {
        instructors.map(instructor=><PopulerInstractor instructor={instructor} key={instructor._id}></PopulerInstractor>)

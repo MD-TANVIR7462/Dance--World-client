@@ -14,7 +14,7 @@ const AdminMenageClass = () => {
       const newstatus = { status };
       console.log(newstatus);
 
-      fetch(`http://localhost:5000/classupdateAdmin/${_id}`, {
+      fetch(`https://ass-12-server-mu.vercel.app/classupdateAdmin/${_id}`, {
          method: 'PATCH',
          headers: {
             'content-type': 'application/json',
@@ -48,7 +48,7 @@ const AdminMenageClass = () => {
       const feedbackData = { Feedback: feedback };
      
 
-      fetch(`http://localhost:5000/AdminFeedback/${selectedId}`, {
+      fetch(`https://ass-12-server-mu.vercel.app/AdminFeedback/${selectedId}`, {
          method: 'PATCH',
          headers: {
             'content-type': 'application/json',
@@ -110,7 +110,7 @@ const AdminMenageClass = () => {
                      <td>{cart?.instructor}</td>
                      <td>{cart?.email}</td>
                      <td>{cart?.price} $</td>
-                     <td className="ps-10">{cart?.students}</td>
+                     <td className="ps-10">{cart?.Availableseats}</td>
                      <td className="font-semibold">{cart?.status}</td>
                      <td>
                         <button

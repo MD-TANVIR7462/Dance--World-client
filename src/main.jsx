@@ -25,6 +25,9 @@ import DashboardHome from './Dashbord/DashboardHome/DashboardHome.jsx';
 import UpdateFrom from './Pages/InstructorPages/UpdateFrom/UpdateFrom.jsx';
 import AdminMenageClass from './Pages/AdminPages/AdminMenageClass/AdminMenageClass.jsx';
 import Payment from './Pages/UserPages/UserDashbordPages/Payment/Payment.jsx';
+import IstrctorPrivate from './Components/PrivateRoute/IstrctorPrivate.jsx';
+import AdminRoute from './Components/PrivateRoute/AdminRoute.jsx';
+import EnrollClass from './Pages/UserPages/UserDashbordPages/EnrollClass/EnrollClass.jsx';
 
 
 
@@ -78,49 +81,46 @@ const router = createBrowserRouter([
         path: "/dashboard/bookmarkedclasses",
         element: <PrivateRoute><UserDashBookmark></UserDashBookmark></PrivateRoute>
       },
-      // {
-      //   path: "/dashboard/bookmarkedclasses",
-      //   element: <PrivateRoute><UserDashBookmark></UserDashBookmark></PrivateRoute>
-      // },
+      {
+        path: "/dashboard/enrolledclasses",
+        element: <PrivateRoute><EnrollClass></EnrollClass></PrivateRoute>
+      },
 {
   path: "/dashboard/payment/:id",
-  element: <Payment></Payment>,
-  loader : ({params})=>fetch(`http://localhost:5000/paymentBookmark/${params.id}`)
+  element:<PrivateRoute> <Payment></Payment></PrivateRoute>,
+  loader : ({params})=>fetch(`https://ass-12-server-mu.vercel.app/paymentBookmark/${params.id}`)
 },
 
       // instructor route==========>>>
       {
 
         path: "/dashboard/addaclass",
-        element: <AddAclass></AddAclass>,
+        // element: <AddAclass></AddAclass>,
+        element: <IstrctorPrivate><AddAclass></AddAclass></IstrctorPrivate>
       },
       {
 
         path: "/dashboard/ALlclassesIns",
-        element: <InstructorAllclass></InstructorAllclass>,
+        element: <IstrctorPrivate><InstructorAllclass></InstructorAllclass></IstrctorPrivate>,
       },
       {
         path: '/dashboard/updateDetails/:id',
-        element:<UpdateFrom></UpdateFrom>,
-        loader:({params})=>fetch(`http://localhost:5000/instructorclasses/${params.id}`)
+        element:<IstrctorPrivate><UpdateFrom></UpdateFrom></IstrctorPrivate>,
+        loader:({params})=>fetch(`https://ass-12-server-mu.vercel.app/instructorclasses/${params.id}`)
        
       },
         // admin routes ===========>>>>  
       {
 
         path: "/dashboard/menageuser",
-        element: <MenageUser></MenageUser>,
+        element:<AdminRoute> <MenageUser></MenageUser> </AdminRoute>,
       },
       {
 
         path: "/dashboard/manageclasses",
-        element:<AdminMenageClass></AdminMenageClass>,
+        element:<AdminRoute><AdminMenageClass></AdminMenageClass></AdminRoute>,
       },
-      // {
-
-      //   path: "/dashboard/test",
-      //   element:<Test></Test>,
-      // },
+   
 
 
     ]

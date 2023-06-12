@@ -1,4 +1,5 @@
 import React from 'react';
+import SectionTitle from '../SectionTitle/SectionTitle';
 
 const PerformanceVideos = () => {
   const performanceVideos = [
@@ -30,7 +31,7 @@ const PerformanceVideos = () => {
   return (
     <section className="bg-gray-100 py-20">
       <div className="container mx-auto w-11/12 ">
-        <h2 className="text-3xl font-bold text-center mb-8 ">Top Student's Perfomance</h2>
+        <SectionTitle title={"Student's Perfomance"}></SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {performanceVideos.map((video) => (
             <div key={video.id} className="bg-white rounded shadow p-3">

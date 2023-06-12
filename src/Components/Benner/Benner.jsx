@@ -10,7 +10,7 @@ import BennerImage from './BennerImage/BennerImage';
 
 const Benner = () => {
 
-   // const imageUrl = "https://i.ibb.co/1qbXWYH/the-dance-academy-lehi-empowering-young-dancers-leaping-1800-sm.jpg";
+
 
 
 
