@@ -12,15 +12,12 @@ const PopulerClass = () => {
     fetch('http://localhost:5000/instractorclass')
       .then(res => res.json())
       .then(data => {
-        if (data.length > 6) {
+      
     
      const newdata =data.filter(singleData => singleData.status === "Approve")
    console.log(newdata)
    setClass(newdata.slice(0,6))
-        }
-        else {
-          setClass(data)
-        } 
+     
        
 
       })

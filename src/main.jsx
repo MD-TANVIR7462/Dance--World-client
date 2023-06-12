@@ -24,6 +24,7 @@ import InstructorAllclass from './Pages/InstructorPages/InstructorAllclass/Instr
 import DashboardHome from './Dashbord/DashboardHome/DashboardHome.jsx';
 import UpdateFrom from './Pages/InstructorPages/UpdateFrom/UpdateFrom.jsx';
 import AdminMenageClass from './Pages/AdminPages/AdminMenageClass/AdminMenageClass.jsx';
+import Payment from './Pages/UserPages/UserDashbordPages/Payment/Payment.jsx';
 
 
 
@@ -77,7 +78,15 @@ const router = createBrowserRouter([
         path: "/dashboard/bookmarkedclasses",
         element: <PrivateRoute><UserDashBookmark></UserDashBookmark></PrivateRoute>
       },
-
+      // {
+      //   path: "/dashboard/bookmarkedclasses",
+      //   element: <PrivateRoute><UserDashBookmark></UserDashBookmark></PrivateRoute>
+      // },
+{
+  path: "/dashboard/payment/:id",
+  element: <Payment></Payment>,
+  loader : ({params})=>fetch(`http://localhost:5000/paymentBookmark/${params.id}`)
+},
 
       // instructor route==========>>>
       {

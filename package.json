@@ -12,6 +12,8 @@
   "dependencies": {
     "@mui/material": "^5.13.4",
     "@mui/styled-engine-sc": "^5.12.0",
+    "@stripe/react-stripe-js": "^2.1.0",
+    "@stripe/stripe-js": "^1.54.0",
     "aos": "^2.3.4",
     "firebase": "^9.22.1",
     "framer-motion": "^10.12.16",

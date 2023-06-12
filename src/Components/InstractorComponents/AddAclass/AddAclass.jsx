@@ -5,6 +5,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
 
+
 const imgHostingToken = import.meta.env.VITE_API_Token
 
 
@@ -31,7 +32,10 @@ const AddAclass = () => {
                const imgURL = imgResponse.data.display_url;
                const { className, price, email, instructor, image, Availableseats,
                } = data;
-               const newItem = { className, price, email, instructor, image: imgURL, Availableseats, students: 0, status: "pending" }
+               const newPrice = parseFloat(price)
+               const newSeats = parseFloat(Availableseats)
+               
+               const newItem = { className, price : newPrice , email, instructor, image: imgURL, Availableseats : newSeats , students: 0, status: "pending" }
                console.log(newItem)
                fetch('http://localhost:5000/addaclass', {
                   method: 'POST',
