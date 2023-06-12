@@ -18,7 +18,7 @@ if(loading){
       <progress className="progress  w-56"></progress>
    </div>
 }
-if(User && findUser.role ==="admin"){
+if(User && findUser?.role === "admin"){
    return children
 }
 else{

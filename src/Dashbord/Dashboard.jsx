@@ -86,7 +86,7 @@ const Dashboard = () => {
               </>
             )}
 
-            {findUser?.role === 'admin' && (
+            {findUser?.role === "admin" && (
               <>
                 <li>
                   <Link
@@ -110,7 +110,7 @@ const Dashboard = () => {
             )}
 
          
-            {findUser?.role === 'instructor' && (
+            {findUser?.role === "instructor" && (
               <>
                 <li>
                   <Link

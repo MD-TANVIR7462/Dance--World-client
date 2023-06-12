@@ -6,7 +6,7 @@ Welcome to Dance World, the ultimate dance summer school website!
 
 Dance World is a platform that offers a wide range of dance classes and workshops for dance enthusiasts of all ages and skill levels. Whether you're a beginner or an experienced dancer, Dance World provides an immersive and enjoyable learning experience.
 
-Visit the [Dance World ](') to explore our classes, instructors, and payment options.
+Visit the [Dance World ](https://dance-world-c2149.web.app/) to explore our classes, instructors, and payment options.
 
 ## Features
 

@@ -19,7 +19,7 @@ if(loading){
 if(User && !findUser?.role){
    return children
 }
-if(User && findUser.role){
+if(User && findUser?.role){
    return <Navigate to="/" />
 }
 else{
