@@ -23,7 +23,7 @@ const PerformanceVideos = () => {
     },
     
   ];
-
+  
   const handleVideoClick = (videoUrl) => {
     window.open(videoUrl, '_blank');
   };

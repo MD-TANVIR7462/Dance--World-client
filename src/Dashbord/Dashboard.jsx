@@ -12,8 +12,6 @@ import useUsers from '../../Hooks/useUsers';
 import { AuthContext } from '../Components/Provider/AuthProvider';
 import { FaCreativeCommonsNcEu } from 'react-icons/fa';
 
-
-
 const Dashboard = () => {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
