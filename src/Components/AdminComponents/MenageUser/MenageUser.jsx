@@ -7,15 +7,16 @@ const { users, refetch } = useUsers();
 
 const HandleInstractor = (id) => {
    
-   fetch(`https://ass-12-server-mu.vercel.app/allusers/instractor/${id}`,{
-      method : 'PATCH'
-   })
-   .then(res=>res.json())
-   .then(data=>{
-      console.log(data)
-      refetch()
-     
-   })
+  fetch(`https://ass-12-server-mu.vercel.app/allusers/instructor/${id}`,{
+    method : 'PATCH'
+ })
+ .then(res=>res.json())
+ .then(data=>{
+  
+    refetch()
+   
+ })
+  
 }
 const HandleAdmin = (id) => {
    
@@ -24,7 +25,7 @@ const HandleAdmin = (id) => {
    })
    .then(res=>res.json())
    .then(data=>{
-      console.log(data)
+    
       refetch()
      
    })

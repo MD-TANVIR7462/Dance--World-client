@@ -36,7 +36,7 @@ const AddAclass = () => {
                const newSeats = parseFloat(Availableseats)
                
                const newItem = { className, price : newPrice , email, instructor, image: imgURL, Availableseats : newSeats , students: 0, status: "pending" }
-               console.log(newItem)
+              
                fetch('https://ass-12-server-mu.vercel.app/addaclass', {
                   method: 'POST',
 
@@ -47,7 +47,7 @@ const AddAclass = () => {
                })
              .then(res=>res.json())
              .then(data=>{
-               console.log(data)
+             
                Swal.fire({
                   icon:'success',
                   title: 'Class Added Successfully',

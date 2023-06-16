@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { FaTrashAlt ,FaCcAmazonPay} from 'react-icons/fa';
 import { useQuery } from 'react-query';
 import { AuthContext } from '../../../../Components/Provider/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,7 +10,7 @@ const UserDashBookmark = () => {
   const { User } = useContext(AuthContext);
   const navigat = useNavigate();
 
-  const { data: carts, isLoading, isError, error, refetch } = useQuery('bookmarks', async () => {
+  const { data: carts, isLoading, isError,refetch } = useQuery('bookmarks', async () => {
     const response = await fetch(`https://ass-12-server-mu.vercel.app/mybookmark?email=${User?.email}`);
     if (!response.ok) {
       throw new Error('Failed to fetch bookmarks');
@@ -43,9 +44,9 @@ const UserDashBookmark = () => {
     <div>
       <div className="w-full md:w-5/5 lg:w-4/4 bg-white rounded-lg shadow-lg overflow-hidden">
         <SectionTitle title={"BOOKMARKED CLASSES!"}></SectionTitle>
-        {isLoading && <p>Loading...</p>}
+     
        
-        {!isLoading && !isError && (carts?.length === 0 ? (
+        {  (carts?.length === 0 ? (
           <div className="flex flex-col justify-center min-h-[700px] items-center p-8">
             <img src={"https://i.ibb.co/wJVvS1F/603828-612x612.jpg"} alt="Empty Cart" className="w-[500px] mb-4" />
             <p className="text-black text-3xl my-10">Nothing here. Add some?</p>
@@ -78,10 +79,11 @@ const UserDashBookmark = () => {
                   <td className="ps-10">{cart.Availableseats}</td>
                   <td>
                     <button
-                      className="btn btn-warning btn-outline btn-sm text-white font-bold hover:bg-warning transition-all"
+                      className="btn btn-warning text-black btn-outline btn-sm  font-bold hover:bg-warning transition-all"
                       onClick={() => handleDelete(cart?._id)}
                     >
-                      Delete
+                     <FaTrashAlt />
+                     
                     </button>
                   </td>
                   <td>
@@ -89,7 +91,7 @@ const UserDashBookmark = () => {
                       className="btn btn-primary btn-outline btn-sm text-white font-bold hover:bg-primary transition-all"
                       onClick={() => handePayment(cart?._id)}
                     >
-                      Pay
+                   <FaCcAmazonPay />
                     </button>
                   </td>
                 </tr>

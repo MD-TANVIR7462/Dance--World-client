@@ -17,7 +17,7 @@ document.querySelector("html").setAttribute("data-theme", localtheme)
    const logout = () => {
       signOutUSer()
          .then((result) => {
-            console.log(result);
+            
             Swal.fire({
                position: 'top-center',
                icon: 'success',

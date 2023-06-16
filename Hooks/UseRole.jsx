@@ -16,6 +16,3 @@ const UseRole = () => {
 
 export default UseRole;
 
-
-
-

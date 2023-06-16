@@ -5,10 +5,12 @@ import {
   AiFillCheckCircle,
   AiOutlineUser,
   AiOutlinePlus,
+  
 } from 'react-icons/ai';
 import { BsFillGridFill, BsFillPeopleFill } from 'react-icons/bs';
 import useUsers from '../../Hooks/useUsers';
 import { AuthContext } from '../Components/Provider/AuthProvider';
+import { FaCreativeCommonsNcEu } from 'react-icons/fa';
 
 
 
@@ -81,6 +83,15 @@ const Dashboard = () => {
                   >
                     <AiFillCheckCircle className="mr-2" />
                     <span>Enrolled Classes</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/dashboard/history"
+                    className="hover:text-purple-200 transition-colors duration-300 flex items-center"
+                  >
+                    <FaCreativeCommonsNcEu />
+                    <span>Payment History</span>
                   </Link>
                 </li>
               </>

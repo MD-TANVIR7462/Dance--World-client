@@ -41,13 +41,14 @@ const AdminMenageClass = () => {
 
    const handleSubmit = () => {
       if (!selectedId) {
+
          return; 
       }
 
       
       const feedbackData = { Feedback: feedback };
      
-
+   
       fetch(`https://ass-12-server-mu.vercel.app/AdminFeedback/${selectedId}`, {
          method: 'PATCH',
          headers: {
@@ -73,6 +74,7 @@ const AdminMenageClass = () => {
 
    const openModal = (_id) => {
       setSelectedId(_id);
+      
       setIsOpen(true);
    };
 

@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye } from "react-icons/fa";
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
-
+import { FaGoogle } from 'react-icons/fa';
 
 const LoginPage = () => {
   const [error, seterror] = useState('')
@@ -17,13 +17,13 @@ const LoginPage = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+  
     
 
     SignInUSer(email, password)
       .then((result) => {
 
-        console.log(result);
+       
         Swal.fire({
           position: 'top-right',
           icon: 'success',
@@ -39,7 +39,7 @@ const LoginPage = () => {
       .catch((error) => {
 
         seterror(error.message)
-        console.log(error)
+      
       });
 
   };
@@ -52,7 +52,7 @@ const LoginPage = () => {
           const {displayName,email,photoURL}   =  result.user
 
           const user = { name : displayName, image : photoURL,email : email};
-          console.log(user)
+      
 
     
 
@@ -162,7 +162,7 @@ const LoginPage = () => {
           </form>
           <div className="mt-4 flex flex-col items-center ">
             <p className="text-sm text-center text-white pb-5">Sign Up With</p>
-            <button className='btn btn-circle btn-warning w-20' onClick={handleGoogle}>google</button>
+            <button className='btn btn-circle btn-warning px-4 text-center text-blue-800' onClick={handleGoogle}><FaGoogle></FaGoogle></button>
           </div>
         </div>
       </div>

@@ -16,9 +16,9 @@ const PopulerClass = () => {
       
     
      const newdata =data.filter(singleData => singleData.status === "Approve")
-   console.log(newdata)
-   setClass(newdata.slice(0,6))
-     
+     const newsData = newdata.slice(0,6)
+  //  setClass(newdata.slice(0,6))
+     setClass(newsData)
        
 
       })
@@ -26,7 +26,7 @@ const PopulerClass = () => {
 
 
 
-  const sortedClasses = classes.sort((a, b) => b.students - a.students);
+  const sortedClasses = classes?.sort((a, b) => b.students - a.students);
 
 
   return (

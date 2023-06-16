@@ -6,9 +6,9 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 
 
 const InstractorMain = () => {
-  const { users, refetch } = useUsers([]);
-
-  const instructors = users?.filter(user => user.role === "instructor").slice(0,6) || [];
+  const { users, refetch } = useUsers();
+console.log(users);
+  const instructors = users?.filter(user => user.role === "instructor").slice(0,6);
 
   return (
     <section className="bg-gray-100 py-20">
@@ -21,6 +21,7 @@ const InstractorMain = () => {
         </div>
       </div>
     </section>
+   
   );
 };
 

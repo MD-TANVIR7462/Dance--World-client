@@ -10,6 +10,12 @@ const BannerImage = ({ imageUrl, title, subtitle }) => {
       AOS.init({ duration: 800, once: true });
    }, []);
 
+
+
+
+
+
+
    return (
       <div className="hero min-h-[800px]  bg-gradient-to-r from-pink-500 to-violet-500">
          <div className="hero-content flex  pb-32  pt-48 gap-32 flex-col md:flex-row-reverse">

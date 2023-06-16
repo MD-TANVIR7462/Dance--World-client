@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../../../Components/Provider/AuthProvider';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import SectionTitle from '../../../../Components/SectionTitle/SectionTitle';
+import { AuthContext } from '../../../../Components/Provider/AuthProvider';
 
-const EnrollClass = () => {
+
+const PaymentHis = () => {
   const { User } = useContext(AuthContext);
   const { data: carts, refetch ,} = useQuery('bookmarks', async () => {
     const response = await fetch(`https://ass-12-server-mu.vercel.app/enrolledClass?email=${User?.email}`);
@@ -22,7 +23,7 @@ const EnrollClass = () => {
   return (
     <div>
       <div className="w-full md:w-5/5 lg:w-4/4 bg-white rounded-lg shadow-lg overflow-hidden">
-        <SectionTitle title={"Enrolld Classes !!"}></SectionTitle>
+        <SectionTitle title={"Payment History !!"}></SectionTitle>
         {
           carts?.length === 0 ?
       
@@ -42,6 +43,7 @@ const EnrollClass = () => {
                 <th>Class Name</th>
                 <th>Instructor</th>
                 <th>Payment</th>
+                <th>Transaction ID</th>
                 <th>Payment Date</th>
               </tr>
             </thead>
@@ -55,6 +57,7 @@ const EnrollClass = () => {
                   <td>{cart.className}</td>
                   <td>{cart.insName}</td>
                   <td>{cart.price} $</td>
+                  <td className="ps-10">{cart.tranjectId}</td>
                   <td>{cart.date}</td>
                 </tr>
               ))}
@@ -68,4 +71,4 @@ const EnrollClass = () => {
   );
 };
 
-export default EnrollClass;
+export default PaymentHis;

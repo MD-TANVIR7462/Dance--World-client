@@ -28,6 +28,7 @@ import Payment from './Pages/UserPages/UserDashbordPages/Payment/Payment.jsx';
 import IstrctorPrivate from './Components/PrivateRoute/IstrctorPrivate.jsx';
 import AdminRoute from './Components/PrivateRoute/AdminRoute.jsx';
 import EnrollClass from './Pages/UserPages/UserDashbordPages/EnrollClass/EnrollClass.jsx';
+import PaymentHis from './Pages/UserPages/UserDashbordPages/PaymentHistory/PaymentHis.jsx';
 
 
 
@@ -85,6 +86,11 @@ const router = createBrowserRouter([
         path: "/dashboard/enrolledclasses",
         element: <PrivateRoute><EnrollClass></EnrollClass></PrivateRoute>
       },
+      {
+        path: "/dashboard/history",
+        element: <PrivateRoute><PaymentHis></PaymentHis> </PrivateRoute>
+      },
+  
 {
   path: "/dashboard/payment/:id",
   element:<PrivateRoute> <Payment></Payment></PrivateRoute>,

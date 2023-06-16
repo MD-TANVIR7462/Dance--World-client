@@ -29,12 +29,17 @@ const UpdateFrom = () => {
          .then(imgResponse => {
             if (imgResponse.success) {
                const imgURL = imgResponse.data.display_url;
+
                const { className, price, Availableseats } = data;
+               const newAvailableseats = parseFloat(Availableseats);
+
+               const newPrice = parseFloat(price )
+            
                const newItem = {
                   className,
-                  price,
+                  price : newPrice,
                   image: imgURL,
-                  Availableseats
+                  Availableseats : newAvailableseats
                };
               
         fetch(`https://ass-12-server-mu.vercel.app/classupdate/${_id}`, {

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const PopulerInstractor = ({instructor}) => {
   const {email,role  } = instructor
+ 
    return (
       <div className='mb-5 md:mb-0'>
          <div
