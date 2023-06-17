@@ -88,7 +88,7 @@ const Dashboard = () => {
                     to="/dashboard/history"
                     className="hover:text-purple-200 transition-colors duration-300 flex items-center"
                   >
-                    <FaCreativeCommonsNcEu />
+                    <FaCreativeCommonsNcEu className="mr-2" />
                     <span>Payment History</span>
                   </Link>
                 </li>

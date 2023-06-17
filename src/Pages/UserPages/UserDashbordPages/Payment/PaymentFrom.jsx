@@ -57,7 +57,7 @@ const PaymentFrom = ({price,newPay}) => {
         console.log('[error]', error);
         setCardError(error.message);
       } else {
-        // console.log('[PaymentMethod]', paymentMethod);
+      
       }
 
 
@@ -126,7 +126,11 @@ fetch('https://ass-12-server-mu.vercel.app/paymentcomplete',{
     icon: 'success',
     title: 'Payment Succefully',
     showConfirmButton: false,
-    timer: 1500
+    timer: 1500,
+    customClass: {
+      popup: 'bg-white border-4 border-gray-300 rounded-lg',
+      title: 'text-black text-lg font-bold text-center mb-2'
+    },
   })
   navigate('/dashboard/bookmarkedclasses')
   refetch()
@@ -135,33 +139,48 @@ fetch('https://ass-12-server-mu.vercel.app/paymentcomplete',{
 }
     };
    return (
-      <form onSubmit={handleSubmit}>
-      <CardElement
-        options={{
-          style: {
-            base: {
-              fontSize: '16px',
-              color: '#424770',
-              '::placeholder': {
-                color: '#aab7c4',
-              },
-            },
-            invalid: {
-              color: '#9e2146',
+
+
+<form onSubmit={handleSubmit} className="w-full  max-w-2xl mx-auto bg-cyan-800 p-8 rounded-lg shadow-lg">
+  <div className=" mx-auto mb-6 max-w-xl" > {/* Set a specific width for the card container */}
+    <CardElement
+      options={{
+        style: {
+          base: {
+            fontSize: '16px',
+            color: '#ffffff',
+            '::placeholder': {
+              color: '#aab7c4',
             },
           },
-        }}
-      />
-      <button type="submit " className='btn btn-primary btn-sm ' disabled={!stripe || !clientSecret || process}>
-        Pay
-      </button>
-      {
-            cardError && <p className='text-red-800 p-4  mr-5'>{cardError}</p>
-         }
-         {
-          tranjectionID && <p className='text-green-600 p-4  mr-5'>Trsnsection Compleate - {tranjectionID}</p>
-         }
-    </form>
+          invalid: {
+            color: '#9e2146',
+          },
+        },
+      }}
+      className="border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring focus:border-blue-300 bg-cyan-800"
+    />
+  </div>
+  <div className="flex justify-center">
+    <button
+      type="submit"
+      className="btn btn-success text-center py-3 px-6 rounded-lg disabled:opacity-50 shadow-lg"
+      disabled={!stripe || !clientSecret || process}
+    >
+      Pay
+    </button>
+  </div>
+  {cardError && <p className="text-red-800 mt-4 text-center">{cardError}</p>}
+  {tranjectionID && (
+    <p className="text-green-600 mt-4 text-center">
+      Transaction Complete - {tranjectionID}
+    </p>
+  )}
+</form>
+
+
+
+
 
 
    );

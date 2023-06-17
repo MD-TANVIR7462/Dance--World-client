@@ -56,7 +56,7 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Resister></Resister>,
       },
-    
+
       {
 
         path: "/instructors",
@@ -76,7 +76,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/dashboard',
-        element:<DashboardHome></DashboardHome> 
+        element: <DashboardHome></DashboardHome>
       },
       {
         path: "/dashboard/bookmarkedclasses",
@@ -90,18 +90,17 @@ const router = createBrowserRouter([
         path: "/dashboard/history",
         element: <PrivateRoute><PaymentHis></PaymentHis> </PrivateRoute>
       },
-  
-{
-  path: "/dashboard/payment/:id",
-  element:<PrivateRoute> <Payment></Payment></PrivateRoute>,
-  loader : ({params})=>fetch(`https://ass-12-server-mu.vercel.app/paymentBookmark/${params.id}`)
-},
+
+      {
+        path: "/dashboard/payment/:id",
+        element: <PrivateRoute> <Payment></Payment></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://ass-12-server-mu.vercel.app/paymentBookmark/${params.id}`)
+      },
 
       // instructor route==========>>>
       {
 
         path: "/dashboard/addaclass",
-        // element: <AddAclass></AddAclass>,
         element: <IstrctorPrivate><AddAclass></AddAclass></IstrctorPrivate>
       },
       {
@@ -111,22 +110,22 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/updateDetails/:id',
-        element:<IstrctorPrivate><UpdateFrom></UpdateFrom></IstrctorPrivate>,
-        loader:({params})=>fetch(`https://ass-12-server-mu.vercel.app/instructorclasses/${params.id}`)
-       
+        element: <IstrctorPrivate><UpdateFrom></UpdateFrom></IstrctorPrivate>,
+        loader: ({ params }) => fetch(`https://ass-12-server-mu.vercel.app/instructorclasses/${params.id}`)
+
       },
-        // admin routes ===========>>>>  
+      // admin routes ===========>>>>  
       {
 
         path: "/dashboard/menageuser",
-        element:<AdminRoute> <MenageUser></MenageUser> </AdminRoute>,
+        element: <AdminRoute> <MenageUser></MenageUser> </AdminRoute>,
       },
       {
 
         path: "/dashboard/manageclasses",
-        element:<AdminRoute><AdminMenageClass></AdminMenageClass></AdminRoute>,
+        element: <AdminRoute><AdminMenageClass></AdminMenageClass></AdminRoute>,
       },
-   
+
 
 
     ]

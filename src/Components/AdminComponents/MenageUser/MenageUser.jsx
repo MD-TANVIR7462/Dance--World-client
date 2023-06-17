@@ -1,4 +1,5 @@
 
+import { FaUserEdit, FaUserGraduate } from 'react-icons/fa';
 import useUsers from '../../../../Hooks/useUsers';
 
 const MenageUser = () => {
@@ -44,6 +45,8 @@ const HandleAdmin = (id) => {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Role</th>
+                <th>Make Instructor</th>
+                <th>Make Admin</th>
                 
               </tr>
             </thead>
@@ -56,24 +59,18 @@ const HandleAdmin = (id) => {
                   <td>{user.email}</td>
                   <td>{user?.role ? user.role  : 'Student'}</td>
                   <td>
-                  <button onClick={()=>HandleInstractor(user._id)} className="btn btn-warning  btn-xs text-white font-bold hover:bg-green-700 transition-all" 
+                  <button onClick={()=>HandleInstractor(user._id)} className="btn btn-success  btn-md text-xl text-white font-bold hover:bg-emerald-900" 
                   disabled={user?.role==='instructor' || user?.role==='admin'}
                   >
-                   {
-                    user?.role==='instructor'? 'Instructor' : "Make Instruct"
-                                    
-                   }
+                  <FaUserEdit/>
                     </button>
                   </td>
                   <td>
-                    <button onClick={()=>HandleAdmin(user._id)} className="btn btn-warning  btn-xs text-white font-bold hover:bg-red-700 transition-all"
+                    <button onClick={()=>HandleAdmin(user._id)} className="btn btn-warning  btn-md text-lg text-white font-bold hover:bg-red-700 transition-all"
                      disabled={user?.role==='admin'}
                      >
                      <span>
-                     {
-                        user?.role === 'admin' ? ' Admin' : 'Make Admin'
- 
-                     }
+                    <FaUserGraduate/>
                      </span>
                     </button>
                   </td>

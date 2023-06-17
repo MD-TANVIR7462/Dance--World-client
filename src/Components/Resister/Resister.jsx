@@ -27,7 +27,7 @@ const Resister = () => {
       const imageUrl = form.url.value
 
     const user = { name : name, image : imageUrl,email : email};
-    console.log(user)
+  
 
       if (password.length < 6) {
          setError("Password should be at least 6 characters long.");

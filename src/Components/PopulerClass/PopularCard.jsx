@@ -3,6 +3,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import UseRole from '../../../Hooks/UseRole';
+import Swal from 'sweetalert2';
 
 
 
@@ -44,19 +45,18 @@ const PopularCard = ({ Singleclass }) => {
         .then((res) => res.json())
         .then(data => {
          
+          Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Bookmark Added!',
+            showConfirmButton: false,
+            timer: 1500,
+            customClass: {
+              popup: 'bg-white border-4 border-gray-300 rounded-lg',
+              title: 'text-black text-lg font-bold text-center mb-2'
+            },
+          });
           
-            toast.warn('🦄 Wow so easy!', {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "dark",
-              });
-          
-        
           
       
         });

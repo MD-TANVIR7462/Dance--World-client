@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Components/Provider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import { FaCommentAlt, FaRegEdit } from 'react-icons/fa';
 
 
 const InstructorAllclass = () => {
@@ -24,7 +25,7 @@ const InstructorAllclass = () => {
 
 
 const FeedbackHandle = (_id)=>{
-   console.log(_id);
+
    fetch(`https://ass-12-server-mu.vercel.app/instructorclasses/${_id}`)
    .then(res=>res.json())
    .then(data=>Setfeedback(data.Feedback))
@@ -64,18 +65,15 @@ const FeedbackHandle = (_id)=>{
                            <button
                            disabled={!cart?.Feedback}
                               onClick={()=> FeedbackHandle(cart?._id)}
-                              className="btn btn-primary btn-outline btn-sm text-white font-bold hover:bg-warning transition-all">
-                              {
-                                 cart?.Feedback ? "See Feedback" : "No Feedback"
-
-                              }
+                              className="btn bg-purple-500  btn-md text-lg text-cyan-400 font-bold hover:bg-purple-600">
+                             <FaCommentAlt/>
                            </button>
                         </td>
                         <td>
                            <button
-                              onClick={() => updateDetails(cart._id)} className="btn btn-primary btn-outline btn-sm text-white font-bold hover:bg-primary "
+                              onClick={() => updateDetails(cart._id)} className="btn btn-warning btn-outline   btn-md font-bold text-xl "
                            >
-                              Update
+                             <FaRegEdit/>
                            </button>
                         </td>
                      </tr>
@@ -103,7 +101,5 @@ export default InstructorAllclass;
 
 
 
-{/* Open the modal using ID.showModal() method */ }
-{/* <button className="btn" >open modal</button> */ }
 
 

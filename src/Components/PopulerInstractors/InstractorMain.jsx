@@ -7,7 +7,7 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 
 const InstractorMain = () => {
   const { users, refetch } = useUsers();
-console.log(users);
+
   const instructors = users?.filter(user => user.role === "instructor").slice(0,6);
 
   return (

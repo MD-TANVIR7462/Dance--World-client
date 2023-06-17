@@ -9,7 +9,7 @@ import UseRole from '../../../Hooks/UseRole';
 const IstrctorPrivate = ({children}) => {
    const { findUser } = UseRole()
    const location = useLocation()
-   // console.log(location)
+   
 const {User,loading} = useContext(AuthContext)
 
 if(loading){

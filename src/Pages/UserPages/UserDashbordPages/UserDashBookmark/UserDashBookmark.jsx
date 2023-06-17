@@ -32,6 +32,10 @@ const UserDashBookmark = () => {
           title: 'Bookmark Removed!!',
           showConfirmButton: false,
           timer: 1500,
+          customClass: {
+            popup: 'bg-white border-4 border-gray-300 rounded-lg',
+            title: 'text-black text-lg font-bold text-center mb-2'
+          },
         });
       });
   };

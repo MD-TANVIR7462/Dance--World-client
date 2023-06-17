@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useinsClass from '../../../../Hooks/useinsClass';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { FaCheckSquare, FaEnvelope, FaRegWindowClose } from 'react-icons/fa';
 
 const AdminMenageClass = () => {
    const [feedback, setFeedback] = useState('');
@@ -10,9 +11,9 @@ const AdminMenageClass = () => {
    const { classes, refetch } = useinsClass();
 
    const handleApprove = (_id, status) => {
-      console.log(_id, status);
+   
       const newstatus = { status };
-      console.log(newstatus);
+    
 
       fetch(`https://ass-12-server-mu.vercel.app/classupdateAdmin/${_id}`, {
          method: 'PATCH',
@@ -23,13 +24,34 @@ const AdminMenageClass = () => {
       })
          .then((res) => res.json())
          .then((data) => {
-            console.log(data);
-            Swal.fire({
-               icon: 'success',
-               title: 'Class Approved',
-               showConfirmButton: false,
-               timer: 1500,
-            });
+         
+            if(status === "Approve"){
+               Swal.fire({
+                  position: 'top-center',
+                  icon: 'success',
+                  title: 'Class Approved !',
+                  showConfirmButton: false,
+                  timer: 1500,
+                  customClass: {
+                    popup: 'bg-white border-4 border-gray-300 rounded-lg',
+                    title: 'text-black text-lg font-bold text-center mb-2'
+                  },
+                });
+            }
+
+        else{
+         Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Class Denyed !',
+            showConfirmButton: false,
+            timer: 1500,
+            customClass: {
+              popup: 'bg-white border-4 border-gray-300 rounded-lg',
+              title: 'text-black text-lg font-bold text-center mb-2'
+            },
+          });
+        }
 
             refetch();
          });
@@ -58,7 +80,7 @@ const AdminMenageClass = () => {
       })
          .then((res) => res.json())
          .then((data) => {
-            console.log(data);
+  
             Swal.fire({
                icon: 'success',
                title: 'Feedback Sent',
@@ -117,25 +139,25 @@ const AdminMenageClass = () => {
                      <td>
                         <button
                            onClick={() => openModal(cart?._id)}
-                           className="btn btn-success btn-outline btn-xs text-white font-bold hover:bg-warning transition-all"
+                           className="btn btn-success btn-outline btn-md text-lg  font-bold hover:bg-warning transition-all"
                         >
-                           Feedback
+                           <FaEnvelope/>
                         </button>
                      </td>
                      <td>
                         <button
                            onClick={() => handleApprove(cart?._id, 'Approve')}
                            disabled={cart.status === 'Approve' || cart.status === 'Deny'}
-                           className="btn btn-primary btn-outline btn-xs  mr-2 text-white font-bold hover:bg-primary"
+                           className="btn btn-info btn-outline btn-md  text-lg mr-2 text-white font-bold hover:bg-primary"
                         >
-                           Approve
+                           <FaCheckSquare/>
                         </button>
                         <button
                            onClick={() => handleApprove(cart?._id, 'Deny')}
                            disabled={cart.status === 'Approve' || cart.status === 'Deny'}
-                           className="btn btn-warning btn-outline btn-xs text-white font-bold hover:bg-primary"
+                           className="btn btn-warning  text-lg btn-outline btn-md text-white font-bold "
                         >
-                           Deny
+                          <FaRegWindowClose/>
                         </button>
                      </td>
                   </tr>
