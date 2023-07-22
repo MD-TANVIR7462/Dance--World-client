@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { FaRegShareSquare } from 'react-icons/fa';
+import { AiOutlineLogin } from 'react-icons/ai';
 
 const NavBar = () => {
 const [theme , setTheme] = useState(localStorage.getItem("theme")?localStorage.getItem("theme") : "light");
@@ -70,8 +72,8 @@ else{
                   </ul>
                </div>
                <div className='flex items-center'>
-                  <img src={"https://i.ibb.co/f2YbNWG/a8e152ea86a0f346f14a90c42c342c6b.jpg"} className='w-20 flex rounded-full' alt="" />
-                  <span className="text-yellow-400 text-base font-bold md:text-2xl ps-1 ">Dance World</span>
+                  <img src={"https://i.ibb.co/f2YbNWG/a8e152ea86a0f346f14a90c42c342c6b.jpg"} className='md:w-20 w-12  flex rounded-full '  alt="" />
+                  <span className="text-yellow-400 text-base font-bold md:text-2xl ps-1 hidden md:flex ">Dance World</span>
                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -104,15 +106,15 @@ else{
                   <div className="flex justify-center gap-4">
                      <div className="tooltip" data-tip={User?.displayName ? User?.displayName : 'No-Name'}>
                         <label className="btn btn-ghost btn-circle avatar">
-                           <div className="w-10 rounded-full">
-                              <img src={User.photoURL} />
+                           <div className=" w-10 rounded-full">
+                              <img src={User.photoURL}  />
                            </div>
                         </label>
                      </div>
 
-                     <button  onClick={logout} className="btn btn-warning btn-outline  rounded-lg shadow-lg hover:bg-gradient-to-r from-yellow-400 to-yellow-500  flex items-center justify-center space-x-2">
+                     <button  onClick={logout} className="btn btn-md text-2xl  text-white  btn-warning   rounded-lg shadow-lg hover:bg-gradient-to-r from-yellow-400 to-yellow-500  flex items-center justify-center space-x-2">
 
-                        <span className="animate-bounce" >Logout</span>
+                        <span ><FaRegShareSquare/></span>
                      </button>
 
 
@@ -120,9 +122,9 @@ else{
                   </div>
                ) : (
                   <Link to={'/login'}>
-                     <button className="btn btn-warning btn-outline  rounded-lg shadow-lg hover:bg-gradient-to-r from-yellow-400 to-yellow-500  flex items-center justify-center space-x-2">
+                     <button className="btn btn-warning  text-2xl font-bold text-white rounded-lg shadow-lg hover:bg-gradient-to-r from-yellow-400 to-yellow-500  flex items-center justify-center space-x-2">
 
-                        <span className="animate-bounce">Login</span>
+                        <span ><AiOutlineLogin/></span>
                      </button>
                   </Link>
                )}

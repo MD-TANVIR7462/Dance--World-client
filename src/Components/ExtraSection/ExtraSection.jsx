@@ -19,10 +19,10 @@ const ExtraSection = () => {
   };
 
   return (
-    <section>
+    <section className=''>
       <Parallax bgImage="https://i.ibb.co/k9xVxd1/Web-banner-No-words.png" strength={500}>
-        <div className="parallax-container">
-          <div className="overlay">
+        <div className="parallax-container ">
+          <div className="overlay ">
             <motion.div
               className="content"
               initial="initial"
