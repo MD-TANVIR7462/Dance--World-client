@@ -1,34 +1,15 @@
 
-import Aos from 'aos';
+
 import React, { useEffect } from 'react';
 
 const PopulerInstractor = ({ instructor }) => {
   const { email, role } = instructor;
 
-  useEffect(() => {
-    Aos.init();
 
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', handleScroll);
-
-    function handleScroll() {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > lastScrollTop) {
-        Aos.refresh();
-      } else {
-        Aos.init();
-      }
-      lastScrollTop = scrollTop;
-    }
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     
-    <div className="mb-5 md:mb-0" data-aos="zoom-out-down">
+    <div className="mb-5 md:mb-0" >
       <div className="relative bg-white rounded-md overflow-hidden cursor-pointer hover:shadow-lg transition-shadow duration-300">
         <div className="group">
           <img

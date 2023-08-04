@@ -10,9 +10,9 @@ const Allinstructor = () => {
 
   return (
     <div className=" md:pb-12 bg-gray-100">
-      <div className="md:min-h-[800px]  mx-auto">
+      <div className=" mb-12 mx-auto">
         <Parallax bgImage="https://i.ibb.co/yF24jLv/group-contemporary-teens-pants-tanktops-repeating-after-dance-leader-274679-34618.jpg" strength={500}>
-          <div className="hero min-h-[500px] md:min-h-[800px]">
+          <div className="hero min-h-[500px] md:min-h-[600px]">
             <div className="hero-overlay"></div>
             <div className="hero-content text-center text-white">
               <div className="max-w-md mx-auto">

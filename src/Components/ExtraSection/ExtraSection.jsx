@@ -29,15 +29,13 @@ const ExtraSection = () => {
               animate="animate"
               variants={sectionVariants}
             >
-              <h2 className="section-heading">Welcome to Dance World</h2>
+              <h2 className="text-4xl font-bold mb-8">70 %  OFF FOR TODAYS ENROLMENT</h2>
               <p className="text-base md:px-32 py-4">
                 Join us this summer for an extraordinary dance experience at Dance World's Summer School Dance Champ! Discover your passion for dance, learn from world-class instructors, and unleash your full potential in a vibrant and supportive community.
               </p>
-              <p className="text-base md:px-32 py-4">
-                Our program offers a wide range of dance styles, including ballet, jazz, hip-hop, contemporary, and more. Whether you're a beginner or an advanced dancer, our expert faculty will guide you through intensive training, choreography workshops, and unforgettable performances.
-              </p>
+           
              
-              <a href="/register" className="btn btn-warning ">Register Now</a>
+              <a href="/register" className="btn btn-warning ">Enroll Now</a>
             </motion.div>
           </div>
         </div>

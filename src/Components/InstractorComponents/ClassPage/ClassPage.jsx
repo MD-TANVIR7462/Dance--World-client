@@ -15,9 +15,9 @@ setAprove(newdata)
      <div className='bg-gray-100'>
 
 
-<div className="md:min-h-[800px] mx-auto ">
+<div className="mb-20 mx-auto ">
         <Parallax bgImage="https://i.ibb.co/d7R2Q5x/free-people-silhouettes-party-dance-vector.jpg" strength={500}>
-          <div className="hero md:min-h-[1000px]">
+          <div className="hero md:min-h-[600px]">
             <div className="hero-overlay"></div>
             <div className="hero-content text-center text-white">
               <div className="max-w-md mx-auto">

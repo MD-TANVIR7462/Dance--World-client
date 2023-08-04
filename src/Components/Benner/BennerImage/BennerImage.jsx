@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
+import Tilt from "react-parallax-tilt";
 const BannerImage = ({ imageUrl, title, subtitle }) => {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -12,6 +12,7 @@ const BannerImage = ({ imageUrl, title, subtitle }) => {
   return (
     <div className="hero min-h-[800px] bg-gradient-to-r from-pink-500 to-violet-500">
       <div className="hero-content flex pb-8 pt-24 md:pb-32 md:pt-48 gap-8 md:gap-32 flex-col md:flex-row-reverse">
+      {/* <Tilt> */}
         <motion.img
           data-aos="flip-left"
           data-aos-easing="ease-out-cubic"
@@ -23,6 +24,7 @@ const BannerImage = ({ imageUrl, title, subtitle }) => {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
         />
+        {/* </Tilt> */}
         <div className="flex flex-col justify-center">
           <motion.h1
             className="text-2xl md:text-4xl text-white font-bold"
