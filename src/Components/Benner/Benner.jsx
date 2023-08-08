@@ -62,7 +62,7 @@ const Benner = () => {
                  <BennerImage 
                   imageUrl = {"https://i.ibb.co/fqXKvKC/two-dancers-young-man-and-woman-dancing-hip-hop-i-2021-12-09-16-11-52-utc-scaled-e1655460990779-1-MC.jpg"}
                   title={' Sensual Latin Dance'}
-                  subtitle={'Experience the passion and sensuality of Latin dance. Join our Sensual Latin Dance classes to explore captivating styles like salsa, bachata, and tango, as you move to the infectious rhythms and embrace the romance of Latin music'}
+                  subtitle={'Experience the passion and sensuality of Latin dance. Join our Sensual Latin Dance classes to explore captivating styles like salsa, bachata, and tango, as you move to the infectious rhythms'}
                  
                  >
                  </BennerImage>

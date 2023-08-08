@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Tilt from "react-parallax-tilt";
+
 const BannerImage = ({ imageUrl, title, subtitle }) => {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
   return (
-    <div className="hero min-h-[800px] bg-gradient-to-r from-pink-500 to-violet-500">
-      <div className="hero-content flex pb-8 pt-24 md:pb-32 md:pt-48 gap-8 md:gap-32 flex-col md:flex-row-reverse">
+    <div className="hero md:min-h-[800px] bg-gradient-to-r from-pink-500 to-violet-500">
+      <div className="hero-content flex py-20 md:pb-32 md:pt-48 gap-8 md:gap-32 flex-col md:flex-row-reverse">
       {/* <Tilt> */}
         <motion.img
           data-aos="flip-left"
@@ -44,7 +44,7 @@ const BannerImage = ({ imageUrl, title, subtitle }) => {
           </motion.p>
           <Link to="/" className="inline-block">
             <motion.button
-              className="btn btn-warning rounded-lg shadow-lg hover:bg-gradient-to-r from-yellow-400 to-yellow-500 flex items-center justify-center space-x-2"
+              className="btn  btn-warning rounded-lg shadow-lg hover:bg-gradient-to-r from-yellow-400 to-yellow-500 flex items-center justify-center space-x-2"
               data-aos="fade-up"
               data-aos-easing="ease-in-out"
               data-aos-duration="1000"

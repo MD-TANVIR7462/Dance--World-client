@@ -1,3 +1,13 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.heading {
+
+   font-family: 'Josefin Sans', sans-serif;
+  
+}
+.body{
+   font-family: 'Josefin Sans', sans-serif;
+}

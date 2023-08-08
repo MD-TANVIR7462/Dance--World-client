@@ -30,7 +30,7 @@ const PerformanceVideos = () => {
 
   return (
     <section className="bg-gray-100 py-20">
-      <div className="container mx-auto w-11/12 ">
+      <div className="container mx-auto md:w-11/12 ">
         <SectionTitle title={"Student's Perfomance"}></SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {performanceVideos.map((video) => (

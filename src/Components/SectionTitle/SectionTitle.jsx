@@ -19,7 +19,7 @@ const SectionTitle = ({ title }) => {
 
   return (
     <motion.h2
-      className="text-3xl md:text-5xl  font-bold text-center mb-20"
+      className="text-3xl md:text-5xl  font-bold text-center mb-8 md:mb-20"
       variants={titleVariants}
       initial="initial"
       animate="animate"

@@ -1,6 +1,3 @@
-
-
-
 import React from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -12,11 +9,11 @@ const Newsection = () => {
       AOS.init();
    }, []);
    return (
-      <section className='mb-16'>
+      <section className=''>
          <div className='grid grid-cols-1 md:grid-cols-2 mx-auto'>
       
             <img className='w-full ' src="https://i.ibb.co/zQRwMvq/240-F-303120151-Jkf7xq-HJFy2-Mdt32-Alcy-Z2ezvs-GSTLnd.jpg" alt="" data-aos="zoom-in"
-               data-aos-duration="1000"
+               data-aos-duration="2000"
                data-aos-easing="ease-in-out"
                data-aos-mirror="true"
             />
