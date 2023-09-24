@@ -5,7 +5,7 @@ import {
   AiFillCheckCircle,
   AiOutlineUser,
   AiOutlinePlus,
-  
+
 } from 'react-icons/ai';
 import { BsFillGridFill, BsFillPeopleFill } from 'react-icons/bs';
 import useUsers from '../../Hooks/useUsers';
@@ -41,7 +41,7 @@ const Dashboard = () => {
   if (findUser?.role === 'admin') {
     dashboardTitle = 'Admin Dashboard';
   } else if (findUser?.role === 'instructor') {
- 
+
     dashboardTitle = 'Instructor Dashboard';
   } else {
     dashboardTitle = 'User Dashboard';
@@ -49,20 +49,20 @@ const Dashboard = () => {
 
   return (
     <div className="flex min-h-screen">
-    
+
       {isSidebarOpen && (
         <aside className="bg-gradient-to-b from-purple-400 to-pink-400 text-white w-64 p-4">
           <div className="text-3xl font-bold mb-8 ">{dashboardTitle}</div>
           <ul className="space-y-4">
-         <li>
-         <Link
-                    to="/dashboard"
-                    className="hover:text-purple-200 transition-colors duration-300 flex items-center"
-                  >
-                   <BsFillGridFill className="mr-2" />
-                    <span>Dashboard Home</span>
-                  </Link>
-         </li>
+            <li>
+              <Link
+                to="/dashboard"
+                className="hover:text-purple-200 transition-colors duration-300 flex items-center"
+              >
+                <BsFillGridFill className="mr-2" />
+                <span>Dashboard Home</span>
+              </Link>
+            </li>
             {!findUser?.role && (
               <>
                 <li>
@@ -118,7 +118,7 @@ const Dashboard = () => {
               </>
             )}
 
-         
+
             {findUser?.role === "instructor" && (
               <>
                 <li>
@@ -142,7 +142,7 @@ const Dashboard = () => {
               </>
             )}
 
-         
+
             <div className="border-b border-purple-600 my-4" />
             <li>
               <Link

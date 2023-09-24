@@ -8,6 +8,9 @@ Dance World is a platform that offers a wide range of dance classes and workshop
 
 Visit the [Dance World ](https://dance-world-c2149.web.app/) to explore our classes, instructors, and payment options.
 
+## Admin Email 
+- Email : testing@gmail.com
+- Password : Test@T12  
 ## Features
 
 1. **Class Selection**: Browse and choose from a variety of dance classes and workshops offered by Dance World. From contemporary to hip-hop, we have something for everyone.
@@ -27,4 +30,6 @@ Visit the [Dance World ](https://dance-world-c2149.web.app/) to explore our clas
 - Database: MongoDB
 - Payment Gateway: Stripe
 
-
+<p align="center">
+  <img src="https://i.ibb.co/XLN14WS/White-Colorful-Soft-Photo-Grid-Layout-Mockup-Frame-Set-Moodboard-Photo-Collage-1.png" alt="animated" width="500" height="400">
+</p>
